@@ -1,0 +1,13 @@
+{
+  "short_name": "OpusERP",
+  "name": "OpusERP Controle de Provedores",
+  "display": "standalone",
+  "icons": [{
+    "src": "AdminLTELogo1.png",
+    "sizes": "128x128",
+    "type": "image/png"
+  }],
+  "start_url": "../inicio",
+  "theme_color": "#404549",
+  "background_color": "#34373b"
+}

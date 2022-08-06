@@ -1,0 +1,1026 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>OpusERP - Ceps</title>
+
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700&display=fallback">
+  <link rel="stylesheet" href="../../plugins/fontawesome-free/css/all.min.css">
+  <link rel="stylesheet" href="https://code.ionicframework.com/ionicons/2.0.1/css/ionicons.min.css">
+  <link rel="stylesheet" href="../../plugins/tempusdominus-bootstrap-4/css/tempusdominus-bootstrap-4.min.css">
+  <link rel="stylesheet" href="../../plugins/icheck-bootstrap/icheck-bootstrap.min.css">
+  <link rel="stylesheet" href="../../plugins/jqvmap/jqvmap.min.css">
+  <link rel="stylesheet" href="../../dist/css/adminlte.min.css">
+  <link rel="stylesheet" href="../../plugins/overlayScrollbars/css/OverlayScrollbars.min.css">
+  <link rel="stylesheet" href="../../plugins/daterangepicker/daterangepicker.css">
+  <link rel="stylesheet" href="../../plugins/summernote/summernote-bs4.min.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css">
+  <link rel="stylesheet" href="https://cdn.datatables.net/1.10.22/css/jquery.dataTables.min.css" />
+
+	<style type="text/css">
+
+      .table-sm td, .table-sm th {
+          padding: .0.1rem;
+      }
+
+      .table-sm td{
+        border-right: 1px solid #dee2e6;
+        padding: 0 5px;
+        text-transform: uppercase;
+
+      }
+      .table-sm th{
+        border-right: 1px solid #dee2e6;
+        padding: 0 5px;
+        text-transform: uppercase;
+      }
+
+      .tb_linha {
+          cursor: pointer;
+      }
+      .v-selected td {
+          text-shadow: 0 0.1em 0.1em rgb(0 0 0 / 30%);
+          background: #6ba7e4;
+          background: -moz-linear-gradient(top, #75b0e7 0%, #5f9de1 100%);
+          background: -webkit-gradient(linear, left top, left bottom, color-stop(0%, #75b0e7), color-stop(100%, #5f9de1));
+          background: -webkit-linear-gradient(top, #75b0e7 0%, #5f9de1 100%);
+          background: -o-linear-gradient(top, #75b0e7 0%, #5f9de1 100%);
+          background: -ms-linear-gradient(top, #75b0e7 0%, #5f9de1 100%);
+          color: #fff;
+      }
+      .v-selected:hover {
+          text-shadow: 0 0.1em 0.1em rgb(0 0 0 / 30%);
+          background: #6ba7e4;
+          background: -moz-linear-gradient(top, #75b0e7 0%, #5f9de1 100%);
+          background: -webkit-gradient(linear, left top, left bottom, color-stop(0%, #75b0e7), color-stop(100%, #5f9de1));
+          background: -webkit-linear-gradient(top, #75b0e7 0%, #5f9de1 100%);
+          background: -o-linear-gradient(top, #75b0e7 0%, #5f9de1 100%);
+          background: -ms-linear-gradient(top, #75b0e7 0%, #5f9de1 100%);
+          color: #fff;
+      }
+      tr.v-selected>td:hover {
+          text-shadow: 0 0.1em 0.1em rgb(0 0 0 / 30%);
+          background: #6ba7e4;
+          background: -moz-linear-gradient(top, #75b0e7 0%, #5f9de1 100%);
+          background: -webkit-gradient(linear, left top, left bottom, color-stop(0%, #75b0e7), color-stop(100%, #5f9de1));
+          background: -webkit-linear-gradient(top, #75b0e7 0%, #5f9de1 100%);
+          background: -o-linear-gradient(top, #75b0e7 0%, #5f9de1 100%);
+          background: -ms-linear-gradient(top, #75b0e7 0%, #5f9de1 100%);
+          color: #fff;
+      }
+      .modal-header {
+          cursor: move;
+      }
+
+      thead tr{
+        background: linear-gradient(180deg, #c3c3c3,#ffffff);
+        /* cursor:pointer; */
+      }
+
+
+
+
+
+        @media only screen and (min-width:1000px) {
+
+
+
+                    .form-edicao{
+                    -webkit-transform: translate(101%,0);
+                      transform: translate(101%,0);
+                      background: #ffffff;
+                      bottom: 0;
+                      overflow: auto;
+                      position: absolute;
+                      top: 112px;
+                      width: 100%;
+                      z-index: 2000;
+                      padding-top: 15px;
+                      padding-left: 22px;
+                      padding-right: 22px;
+                      transition: -webkit-transform .5s ease-in-out;
+                      transition: transform .5s ease-in-out;
+                      transition: transform .5s ease-in-out, -webkit-transform .5s ease-in-out;
+                      height: 680px;
+                      border-radius: 8px;
+                      border: 1px solid #dee2e7;
+                      /* display: none; */
+                      /* opacity: 0%; */
+
+
+                  }
+
+                  .form-edicao-open{
+                    -webkit-transform: translate(256px,0);
+                      transform: translate(256px,0);
+                      background: #ffffff;
+                      bottom: 0;
+                      overflow: auto;
+                      position: absolute;
+                      top: 112px;
+                      width: 83%;
+                      z-index: 1030;
+                      padding-top: 15px;
+                      padding-left: 22px;
+                      padding-right: 22px;
+                      transition: -webkit-transform .5s ease-in-out;
+                      transition: transform .5s ease-in-out;
+                      transition: transform .5s ease-in-out, -webkit-transform .5s ease-in-out;
+                      height: 680px;
+                      border-radius: 8px;
+                      border: 1px solid #dee2e7;
+                      /* opacity: 100%; */
+                      /* display: block; */
+
+                  }
+
+                  .form-edicao-open-sidebar-collapse{
+                    -webkit-transform: translate(85px,0);
+                      transform: translate(85px,0);
+                      background: #ffffff;
+                      bottom: 0;
+                      overflow: auto;
+                      position: absolute;
+                      top: 112px;
+                      width: 94%;
+                      z-index: 1030;
+                      padding-top: 15px;
+                      padding-left: 22px;
+                      padding-right: 22px;
+                      transition: -webkit-transform .5s ease-in-out;
+                      transition: transform .5s ease-in-out;
+                      transition: transform .5s ease-in-out, -webkit-transform .5s ease-in-out;
+                      height: 680px;
+                      border-radius: 8px;
+                      border: 1px solid #dee2e7;
+                      /* opacity: 100%; */
+                      /* display: block; */
+
+                  }
+
+
+                  .tabela{
+                      height: 570px;
+                    }
+
+
+
+                    .d1-busca{
+                      width: 92%;
+                      float: left;
+                      margin-right: 5px;
+                    }
+
+                    .d2-busca{
+                      width: 7%;
+                      float: left;
+                    }
+        }
+
+        @media only screen and (max-width:1000px) {
+
+                    .loading img{
+                      width: 100%;
+                    }
+
+                      .form-edicao{
+                      -webkit-transform: translate(101%,0);
+                        transform: translate(0,-133%);
+                        background: #ffffff;
+                        bottom: 0;
+                        overflow: auto;
+                        position: absolute;
+                        top: 142px;
+                        width: 100%;
+                        z-index: 3000;
+                        padding-top: 15px;
+                        padding-left: 22px;
+                        padding-right: 22px;
+                        transition: -webkit-transform .5s ease-in-out;
+                        transition: transform .5s ease-in-out;
+                        transition: transform .5s ease-in-out, -webkit-transform .5s ease-in-out;
+                        /* opacity: 0%; */
+
+                    }
+
+                    .form-edicao-open-sidebar-collapse{
+                      -webkit-transform: translate(0,0);
+                        transform: translate(0,0);
+                        background: #ffffff;
+                        bottom: 0;
+                        overflow: auto;
+                        position: absolute;
+                        top: 142px;
+                        width: 100%;
+                        z-index: 10;
+                        padding-top: 15px;
+                        padding-left: 22px;
+                        padding-right: 22px;
+                        transition: -webkit-transform .5s ease-in-out;
+                        transition: transform .5s ease-in-out;
+                        transition: transform .5s ease-in-out, -webkit-transform .5s ease-in-out;
+                        /* opacity: 100%; */
+                    }
+
+                    .form-edicao-open{
+                      -webkit-transform: translate(0,0);
+                        transform: translate(0,0);
+                        background: #ffffff;
+                        bottom: 0;
+                        overflow: auto;
+                        position: absolute;
+                        top: 142px;
+                        width: 100%;
+                        z-index: 10;
+                        padding-top: 15px;
+                        padding-left: 22px;
+                        padding-right: 22px;
+                        transition: -webkit-transform .5s ease-in-out;
+                        transition: transform .5s ease-in-out;
+                        transition: transform .5s ease-in-out, -webkit-transform .5s ease-in-out;
+                        /* opacity: 100%; */
+
+                    }
+
+
+                    .tabela{
+                      height: 480px;
+                    }
+
+
+                    .d1-busca{
+                      width: 80%;
+                      float: left;
+                      margin-right: 5px;
+                    }
+
+                    .d2-busca{
+                      width: 18%;
+                      float: left;
+                    }
+        }
+
+  </style>
+
+  <script src="https://unpkg.com/vue@3"></script>
+</head>
+
+<body class="hold-transition sidebar-mini layout-fixed" style="overflow: hidden;">
+      <div id="app" class="wrapper">
+
+        <nav class="main-header navbar navbar-expand navbar-white navbar-light">
+          <ul class="navbar-nav">
+            <li class="nav-item">
+              <a @click="atualizarEdit()"  class="nav-link" data-widget="pushmenu" href="#" role="button"><i class="fas fa-bars"></i></a>
+            </li>
+          </ul>
+          <h2 class="m-0 text-dark" th:text="${titulo}"></h1>
+        </nav>
+
+        <aside th:insert="menu_lateral_2">
+        </aside>
+
+        <div class="content-wrapper">
+          <!-- Content Header (Page header) -->
+          <div class="content-header">
+              <div class="container-fluid">
+                  <div class="row mb-2">
+                      <div class="col-sm-6">
+                          <h1 class="m-0 text-dark">Ceps </h1>
+                      </div><!-- /.col -->
+                      <div class="col-sm-6">
+                          <ol class="breadcrumb float-sm-right">
+                              <li class="breadcrumb-item">
+                                  <a href="/">Home</a>
+                              </li>
+                              <li class="breadcrumb-item ">Cadastros</li>
+                              <li class="breadcrumb-item active">Cep</li>
+                          </ol>
+                      </div><!-- /.col -->
+                  </div><!-- /.row -->
+              </div><!-- /.container-fluid -->
+          </div>
+          <!-- /.content-header -->
+
+          <!-- Main content -->
+          <section id="content-table" class="content">
+              <div class="container-fluid">
+                  <div class="row mb-1">
+                      <div class="col-12 text-right">
+                          <div class="btn-group btn-group-sm" role="group" aria-label="Basic example">
+                              <button type="button" class="btn btn-secondary mr-1">Novo</button>
+                              <button id="btAlterar" @click="editarCliente()" type="button" class="btn btn-secondary mr-1"
+                                  data-toggle="modal" data-target="#exampleModal" disabled>Alterar</button>
+                              <button id="btExcluir"   @click="excluirCliente()" type="button" class="btn btn-secondary mr-1" disabled>Excluir</button>
+                          </div>
+                      </div>
+                  </div>
+                  <div class="row mb-2">
+                      <div class="col-12" >
+                          <div class="d1-busca" >
+                            <input style="width:100%;" id="txtBuscar" @keydown="(event) => enterBuscar(event)" placeholder="buscar..." type="text"  class="form-control" />
+                          </div>
+                          <div class="d2-busca" >
+                            <button style="width: 100%;" type="button" @click="buscarCliente()" class="btn btn-primary">Buscar</button>
+                          </div>
+                      </div>
+                      <!-- <div class="col-1" style="padding: 0;">
+                      </div> -->
+                  </div>
+                  <div class="row">
+                      <div class="col-12">
+                          <div id="tabela"  class="card tabela d-none" >
+                              <table
+                                  class="table table-hover table-sm text-nowrap table-striped table-condensed table-responsive table-responsive-sm">
+                                  <thead>
+                                      <tr>
+                                          <th class="sorted descending">Cod</th>
+                                          <th>Cep</th>
+                                          <th>Endereço</th>
+                                          <th>Bairro</th>
+                                          <th>Cidade</th>
+                                          <th>País</th>
+
+                                      </tr>
+                                  </thead>
+
+                                  <!--<tbody>
+                                      <tr th:attr="id=${cliente.id}" @click="(event) => selectTb(event)" class="tb_linha" th:each="cliente : ${clientes}">
+                                          <td  data-label="id"><span th:text="${cliente.id}"> </span></td>
+                                          <td  data-label="nome" style="width: 100%;"><span th:text="${cliente.nome_razao}"> </td>
+                                          <td  data-label="doc_cpf_cnpj"><span th:text="${cliente.doc_cpf_cnpj}"> </td>
+                                          <td  data-label="status"><span th:text="${cliente.status}"> </td>
+                                          <td  data-label="status"><span th:text="${cliente.data_cadastro}"> </td>
+                                          <td  data-label="status"><span th:text="${cliente.data_alteracao}"> </td>
+                                      </tr>
+                                  </tbody>-->
+                                  <tr @click="(event) => selectTb(event, c.id)" class="tb_linha"  v-for="c in ceps">
+                                    <td data-label="id">{{ c.id }}</td>
+                                    <td data-label="cep">{{ c.cep }}</td>
+                                    <td style="width:100%;" data-label="endereco">{{ c.endereco }}</td>
+                                    <td data-label="bairro">{{ c.bairro }}</td>
+                                    <td data-label="cidade">{{ c.cidade }}</td>
+                                    <td data-label="pais">{{ c.pais }}</td>
+                                    <!--<td data-label="nome">{{ cliente.telefone2 }}</td>
+                                    <td data-label="nome">{{ cliente.celular1 }}</td>-->
+                                </tr>
+
+
+                              </table>
+                          </div>
+
+                          <div id="loading" class="loading" style="position: absolute; top: 6px;left: 8px; font-weight: bold; font-size: 38px;  width: 100%; text-align: center;">
+                              <img  src="/dist/img/loading.gif" />
+                          </div>
+
+                      </div>
+                  </div>
+              </div>
+          </section>
+          <!-- /.content -->
+        </div>
+
+
+        <div id="frm-edit" class="container-responsive form-edicao">
+
+
+          <div class="row pr-3" style="text-align: right;">
+            <div class="col-11">
+
+            </div>
+            <div class="col-1">
+                <button class="btn" @click="fecharEdicao()">
+                    <i class="fa-solid fa-xmark"></i>
+                </button>
+            </div>
+          </div>
+
+
+          <form>
+              <div class="mb-1 row">
+                  <label for="txtCod" class="col-sm-1 col-form-label col-form-label-sm ">Código</label>
+                  <div class="col-sm-1">
+                      <input type="text" class="form-control form-control-sm" id="txtCod" :value="cliente_selecionado.id" disabled>
+                  </div>
+
+                  <label for="txtCadastro"
+                      class="col-sm-1 col-form-label col-form-label-sm ">Cadastro</label>
+                  <div class="col-sm-2">
+                      <input type="text" class="form-control form-control-sm" id="txtCadastro"
+                          :value="cliente_selecionado.data_cadastro" disabled>
+                  </div>
+
+                  <label for="txtCadastro"
+                      class="col-sm-1 col-form-label col-form-label-sm ">Alteração</label>
+                  <div class="col-sm-2">
+                      <input type="text" class="form-control form-control-sm" id="txtCadastro"
+                          :value="cliente_selecionado.data_alteracao" disabled>
+                  </div>
+
+                  <label for="txtCadastro"
+                      class="col-sm-1 col-form-label col-form-label-sm ">Status</label>
+                  <div class="col-sm-2">
+                      <input type="text" class="form-control form-control-sm" id="txtCadastro"
+                          :value="cliente_selecionado.status" disabled>
+                  </div>
+              </div>
+              <div class="mb-1 row">
+                  <label for="inputPassword"
+                      class="col-sm-1 col-form-label col-form-label-sm ">CPF/CNPJ</label>
+                  <div class="col-sm-2">
+                      <input type="text" class="form-control form-control-sm" id="txtNome"
+                          v-model="cliente_selecionado.doc_cpf_cnpj">
+                  </div>
+
+                  <label for="inputPassword" class="col-sm-2 col-form-label col-form-label-sm ">Insc.
+                      Estadual/RG</label>
+                  <div class="col-sm-2">
+                      <input type="text" class="form-control form-control-sm" id="txtNome"
+                          :value="cliente_selecionado.doc_rg_insc_estadual">
+                  </div>
+
+                  <label for="inputPassword" class="col-sm-2 col-form-label col-form-label-sm ">Orgão
+                      Emissor</label>
+                  <div class="col-sm-2">
+                      <input type="text" class="form-control form-control-sm" id="txtNome"
+                          :value="cliente_selecionado.orgao_emissor_rg">
+                  </div>
+              </div>
+              <div class="mb-1 row">
+                  <label for="txtNome" class="col-sm-1 col-form-label col-form-label-sm ">Nome</label>
+                  <div class="col-sm-6">
+                      <input type="text" class="form-control form-control-sm" id="txtNome"
+                          v-model="cliente_selecionado.nome_razao">
+                  </div>
+                  <div class="col-sm-1">
+                      <input type="text" class="form-control form-control-sm" id="txtNome"
+                          :value="cliente_selecionado.tratamento">
+                  </div>
+                  <div class="col-sm-3">
+                      <input type="text" class="form-control form-control-sm" id="txtNome"
+                          :value="cliente_selecionado.contato">
+                  </div>
+              </div>
+
+              <div class="mb-1 row">
+                  <label for="txtNome" class="col-sm-1 col-form-label col-form-label-sm ">Fantasia</label>
+                  <div class="col-sm-10">
+                      <input type="text" class="form-control form-control-sm" id="txtNome"
+                          :value="cliente_selecionado.fantasia">
+                  </div>
+              </div>
+              <div class="mb-1 row">
+                  <label for="txtNome" class="col-sm-1 col-form-label col-form-label-sm ">Contato</label>
+                  <div class="col-sm-10">
+                      <input type="text" class="form-control form-control-sm" id="txtNome"
+                          :value="cliente_selecionado.contato">
+                  </div>
+              </div>
+
+              <div class="ml-1 mb-1 row">
+                  <nav>
+                      <div class="nav nav-tabs" id="nav-tab" role="tablist">
+                          <a class="nav-item nav-link active" id="nav-principal-tab" data-toggle="tab"
+                              href="#nav-principal" role="tab" aria-controls="nav-principal"
+                              aria-selected="true">Principal</a>
+                          <a class="nav-item nav-link" id="nav-enderecos-tab" data-toggle="tab"
+                              href="#nav-enderecos" role="tab" aria-controls="nav-enderecos"
+                              aria-selected="false">Endereços</a>
+                          <a class="nav-item nav-link" id="nav-outrasinfo-tab" data-toggle="tab"
+                              href="#nav-outrasinfo" role="tab" aria-controls="nav-outrasinfo"
+                              aria-selected="false">Outras Informações</a>
+                          <a class="nav-item nav-link" id="nav-infoaluno-tab" data-toggle="tab"
+                              href="#nav-infoaluno" role="tab" aria-controls="nav-infoaluno"
+                              aria-selected="false">Info. Aluno</a>
+                      </div>
+                  </nav>
+              </div>
+
+              <div class="tab-content" id="nav-tabContent">
+
+
+                  <div class="tab-pane fade show active " id="nav-principal" role="tabpanel" aria-labelledby="nav-principal-tab">
+                      <div class="card p-2">
+                          <div class="mb-1 row">
+                              <label for="txtSexo"
+                                  class="col-sm-1 col-form-label col-form-label-sm ">Sexo</label>
+                              <div class="col-sm-2">
+                                  <select :value="cliente_selecionado.sexo" class="form-control"
+                                      id="txtSexo">
+                                      <option>MASCULINO</option>
+                                      <option>FEMININO</option>
+                                  </select>
+                              </div>
+
+                              <label for="txtNome" class="col-sm-2 col-form-label col-form-label-sm ">Data
+                                  de nascimento</label>
+                              <div class="col-sm-2">
+                                  <input type="date" class="form-control form-control-sm" id="txtNome"
+                                      :value="cliente_selecionado.data_nascimento">
+                              </div>
+
+                              <label for="txtNome"
+                                  class="col-sm-1 col-form-label col-form-label-sm ">Profissão</label>
+                              <div class="col-sm-2">
+                                  <select :value="cliente_selecionado.profissao" class="form-control"
+                                      id="txtSexo">
+
+                                      <option>AGRICULTOR</option>
+                                      <option>ADVOGADO</option>
+                                      <option>APOSENTADO</option>
+                                      <option>AUTONOMO</option>
+                                      <option>AUX. ADMINISTRATIVO</option>
+                                      <option>AUX. DE PRODUÇÃO</option>
+                                      <option>ASSISTENTE SOCIAL</option>
+                                      <option>BOMBEIRO</option>
+                                      <option>BANCARIO</option>
+                                      <option>COSTUREIRA</option>
+                                      <option>DOMESTICA</option>
+                                      <option>DESIGNER</option>
+                                      <option>ELETRICISTA</option>
+                                      <option>EMPILHADOR</option>
+                                      <option>EMPRESARIO</option>
+                                      <option>ENGENHEIRO</option>
+                                      <option>ESTUDANTE</option>
+                                      <option>MECANICO</option>
+                                      <option>METALURGICO</option>
+                                      <option>MEDICO</option>
+                                      <option>MILITAR</option>
+                                      <option>MOTORISTA</option>
+                                      <option>MONITORA</option>
+                                      <option>NAO INFORMADO</option>
+                                      <option>PADRE</option>
+                                      <option>PASTOR</option>
+                                      <option>PADEIRO</option>
+                                      <option>PEDREIRO</option>
+                                      <option>POLICIAL</option>
+                                      <option>PROFESSOR</option>
+                                      <option>PSICOLOGO</option>
+                                      <option>SERVIDOR PUBLICO</option>
+                                      <option>TAXISTA</option>
+                                      <option>TECNICO EM INFORMATICA</option>
+                                      <option>TECNICO EM ENFERMAGEM</option>
+                                      <option>VETERINARIO</option>
+                                      <option>VENDEDOR</option>
+                                      <option>VIGILANTE</option>
+                                  </select>
+                              </div>
+                          </div>
+
+                          <div class="mb-1 row">
+                              <label for="txtNome" class="col-sm-1 col-form-label col-form-label-sm ">Tel.
+                                  Princ.</label>
+                              <div class="col-sm-1">
+                                  <input type="text" class="form-control form-control-sm" id="txtNome"
+                                      :value="cliente_selecionado.ddd_fone1">
+                              </div>
+
+                              <div class="col-sm-2">
+                                  <input type="text" class="form-control form-control-sm" id="txtNome"
+                                      :value="cliente_selecionado.telefone1">
+                              </div>
+
+                              <label for="txtNome" class="col-sm-1 col-form-label col-form-label-sm ">Tel.
+                                  Altern.</label>
+                              <div class="col-sm-1">
+                                  <input type="text" class="form-control form-control-sm" id="txtNome"
+                                      :value="cliente_selecionado.ddd_fone2">
+                              </div>
+
+                              <div class="col-sm-2">
+                                  <input type="text" class="form-control form-control-sm" id="txtNome"
+                                      :value="cliente_selecionado.telefone2">
+                              </div>
+                          </div>
+
+
+                          <div class="mb-1 row">
+                              <label for="txtNome" class="col-sm-1 col-form-label col-form-label-sm ">Tel.
+                                  Altern.</label>
+                              <div class="col-sm-1">
+                                  <input type="text" class="form-control form-control-sm" id="txtNome"
+                                      :value="cliente_selecionado.ddd_cel1">
+                              </div>
+
+                              <div class="col-sm-2">
+                                  <input type="text" class="form-control form-control-sm" id="txtNome"
+                                      :value="cliente_selecionado.celular1">
+                              </div>
+
+                              <label for="txtNome" class="col-sm-1 col-form-label col-form-label-sm ">Tel.
+                                  Altern.</label>
+                              <div class="col-sm-1">
+                                  <input type="text" class="form-control form-control-sm" id="txtNome"
+                                      :value="cliente_selecionado.ddd_cel2">
+                              </div>
+
+                              <div class="col-sm-2">
+                                  <input type="text" class="form-control form-control-sm" id="txtNome"
+                                      :value="cliente_selecionado.celular2">
+                              </div>
+                          </div>
+
+
+                          <div class="mb-1 row">
+                              <label for="txtNome"
+                                  class="col-sm-1 col-form-label col-form-label-sm ">Instagram</label>
+                              <div class="col-sm-3">
+                                  <input type="text" class="form-control form-control-sm" id="txtNome"
+                                      :value="cliente_selecionado.rede_social">
+                              </div>
+                          </div>
+
+
+                          <div class="mb-1 row">
+                              <label for="txtNome"
+                                  class="col-sm-1 col-form-label col-form-label-sm ">Email 1</label>
+                              <div class="col-sm-3">
+                                  <input type="text" class="form-control form-control-sm" id="txtNome"
+                                      :value="cliente_selecionado.email">
+                              </div>
+
+                              <label for="txtNome"
+                                  class="col-sm-1 col-form-label col-form-label-sm ">Site</label>
+                              <div class="col-sm-3">
+                                  <input type="text" class="form-control form-control-sm" id="txtNome"
+                                      :value="cliente_selecionado.site">
+                              </div>
+                          </div>
+
+
+                          <div class="row">
+                              <label for="txtNome"
+                                  class="col-sm-1 col-form-label col-form-label-sm ">Email 2</label>
+                              <div class="col-sm-3">
+                                  <input type="text" class="form-control form-control-sm" id="txtNome"
+                                      :value="cliente_selecionado.msn">
+                              </div>
+
+                              <label for="txtNome" class="col-sm-1 col-form-label col-form-label-sm ">Rede
+                                  Social</label>
+                              <div class="col-sm-3">
+                                  <input type="text" class="form-control form-control-sm" id="txtNome"
+                                      :value="cliente_selecionado.rede_social">
+                              </div>
+                          </div>
+
+
+                          <div class="mb-1 row">
+                              <label for="txtNome" class="col-sm-1 col-form-label col-form-label-sm ">CRM
+                                  Aniv.</label>
+                              <div class="col-sm-1">
+                                  <input type="text" class="form-control form-control-sm" id="txtNome">
+                              </div>
+                          </div>
+
+
+                          <div class="mb-1 row">
+                              <label for="txtNome"
+                                  class="col-sm-1 col-form-label col-form-label-sm ">Categoria</label>
+                              <div class="col-sm-2">
+                                  <input type="text" class="form-control form-control-sm" id="txtNome"
+                                      >
+                              </div>
+
+                              <label for="txtNome" class="col-sm-2 col-form-label col-form-label-sm ">Como nos Conheceu ?</label>
+                              <div class="col-sm-3">
+                                  <input type="text" class="form-control form-control-sm" id="txtNome" >
+                              </div>
+                          </div>
+
+
+                          <div class="mb-1 row">
+                              <label for="txtNome" class="col-sm-1 col-form-label col-form-label-sm">Observação</label>
+                              <div class="col-sm-6">
+                                  <textarea :value="cliente_selecionado.obs" class="form-control form-control-sm" rows="1"
+                                      cols="15"></textarea>
+                              </div>
+                          </div>
+                      </div>
+                  </div>
+
+                  <!-- <div class="tab-pane fade" id="nav-enderecos" role="tabpanel"
+                      aria-labelledby="nav-enderecos-tab">
+                      <div class="card p-2">
+                          <div class="card-header" style="padding: 1.12em; padding-left: 0px;">
+                              <div class="card-tools" style="width:100%;">
+                                  <div class="input-group input-group" style="width: 100%;">
+                                      <a type="submit" class="btn btn-default">Adicionar</a>&nbsp;
+                                      <a type="submit" class="btn btn-default">Editar</a>&nbsp;
+                                      <a type="submit" class="btn btn-default">Editar
+                                          localização</a>&nbsp;
+                                      <a type="submit" class="btn btn-default">Ativar/Inativar</a>&nbsp;
+                                      <a type="submit" class="btn btn-default">Principal/Cobrança</a>
+                                  </div>
+                              </div>
+                          </div>
+
+                          <table id="myTable"
+                              class="table table-hover table-sm text-nowrap table-striped table-condensed table-responsive-sm ">
+                              <thead>
+                                  <tr>
+                                      <th>ID</th>
+                                      <th>CEP</th>
+                                      <th>Endereço</th>
+                                      <th>Número</th>
+                                      <th>Bairro</th>
+                                      <th>Cidade</th>
+                                      <th>UF</th>
+                                  </tr>
+                              </thead>
+                              <tbody>
+                                  <tr v-for="end in enderecos_cliente">
+                                      <td>{{end.id}}</td>
+                                      <td>{{end.cep}}</td>
+                                      <td>{{end.endereco}}</td>
+                                      <td>{{end.numero}}</td>
+                                      <td>{{end.bairro}}</td>
+                                      <td>{{end.cidade}}</td>
+                                      <td>{{end.uf}}</td>
+                                  </tr>
+
+                              </tbody>
+                          </table>
+                      </div>
+                  </div>
+
+                  <div class="tab-pane fade" id="nav-outrasinfo" role="tabpanel"
+                      aria-labelledby="nav-outrasinfo-tab">
+                      <div class="card p-2">
+                          <div class="mb-1 row">
+                              <label for="txtVendedor"
+                                  class="col-sm-1 col-form-label col-form-label-sm ">Vendedor</label>
+                              <div class="col-sm-1">
+                                  <input type="text" class="form-control form-control-sm"
+                                      id="txtVendedor">
+                              </div>
+                          </div>
+                          <div class="mb-1 row">
+                              <label for="txtTransportadoraPadra"
+                                  class="col-sm-1 col-form-label col-form-label-sm ">Transp.
+                                  Padrão</label>
+                              <div class="col-sm-2">
+                                  <input type="text" class="form-control form-control-sm"
+                                      id="txtTransportadoraPadra">
+                              </div>
+                          </div>
+                          <div class="mb-1 row">
+                              <label for="txtTransportadoraPadra"
+                                  class="col-sm-1 col-form-label col-form-label-sm ">Tabela Preço</label>
+                              <div class="col-sm-2">
+                                  <input type="text" class="form-control form-control-sm"
+                                      id="txtTransportadoraPadra">
+                              </div>
+                          </div>
+
+                          <div class="mb-1 row">
+                              <label for="txtPrimeiraCompra"
+                                  class="col-sm-1 col-form-label col-form-label-sm ">Prim. Compra</label>
+                              <div class="col-sm-1">
+                                  <input type="text" class="form-control form-control-sm"
+                                      id="txtPrimeiraCompra">
+                              </div>
+                          </div>
+
+                          <div class="mb-1 row">
+                              <label for="txtPrimeiraCompra"
+                                  class="col-sm-1 col-form-label col-form-label-sm ">Últi. Compra</label>
+                              <div class="col-sm-1">
+                                  <input type="text" class="form-control form-control-sm"
+                                      id="txtPrimeiraCompra">
+                              </div>
+                          </div>
+
+                          <div class="mb-1 row">
+                              <label for="txtPrimeiraCompra"
+                                  class="col-sm-1 col-form-label col-form-label-sm ">SPC/SERASA</label>
+                              <div class="col-sm-1">
+                                  <input type="text" class="form-control form-control-sm"
+                                      id="txtPrimeiraCompra">
+                              </div>
+                          </div>
+
+                          <div class="mb-1 row">
+                              <label for="txtPrimeiraCompra"
+                                  class="col-sm-1 col-form-label col-form-label-sm ">Lim. de Créd.</label>
+                              <div class="col-sm-1">
+                                  <input type="text" class="form-control form-control-sm"
+                                      id="txtPrimeiraCompra">
+                              </div>
+                          </div>
+
+                          <div class="mb-1 row">
+                              <label for="txtPrimeiraCompra"
+                                  class="col-sm-1 col-form-label col-form-label-sm ">Saldo R$</label>
+                              <div class="col-sm-1">
+                                  <input type="text" class="form-control form-control-sm"
+                                      id="txtPrimeiraCompra">
+                              </div>
+                          </div>
+
+                          <div class="mb-1 row">
+                              <label for="txtPrimeiraCompra"
+                                  class="col-sm-1 col-form-label col-form-label-sm ">Black List</label>
+                              <div class="col-sm-1">
+                                  <input type="text" class="form-control form-control-sm"
+                                      id="txtPrimeiraCompra">
+                              </div>
+                          </div>
+
+                          <div class="mb-1 row">
+                              <label for="txtPrimeiraCompra"
+                                  class="col-sm-1 col-form-label col-form-label-sm ">Observação</label>
+                              <div class="col-sm-2">
+                                  <input type="text" class="form-control form-control-sm"
+                                      id="txtPrimeiraCompra">
+                              </div>
+                          </div>
+
+                      </div>
+                  </div>
+                  <div class="tab-pane fade" id="nav-infoaluno" role="tabpanel"
+                      aria-labelledby="nav-infoaluno-tab">
+                  </div>-->
+              </div>
+
+
+          </form>
+
+
+
+          <div class="row">
+            <button type="button" class="btn btn-primary" @click="salvarCliente()">Ok</button>
+          </div>
+
+      </div>
+
+
+
+
+        <aside class="control-sidebar control-sidebar-dark">
+        </aside>
+
+      </div>
+
+
+
+
+
+
+
+  <script src="../../plugins/jquery/jquery.min.js"></script>
+  <script src="../../plugins/jquery-ui/jquery-ui.min.js"></script>
+  <script>
+    $.widget.bridge('uibutton', $.ui.button)
+  </script>
+  <script src="../../plugins/bootstrap/js/bootstrap.bundle.min.js"></script>
+  <script src="../../plugins/chart.js/Chart.min.js"></script>
+  <script src="../../plugins/sparklines/sparkline.js"></script>
+  <script src="../../plugins/jqvmap/jquery.vmap.min.js"></script>
+  <script src="../../plugins/jqvmap/maps/jquery.vmap.usa.js"></script>
+  <script src="../../plugins/jquery-knob/jquery.knob.min.js"></script>
+  <script src="../../plugins/moment/moment.min.js"></script>
+  <script src="../../plugins/daterangepicker/daterangepicker.js"></script>
+  <script src="../../plugins/tempusdominus-bootstrap-4/js/tempusdominus-bootstrap-4.min.js"></script>
+  <script src="../../plugins/summernote/summernote-bs4.min.js"></script>
+  <script src="../../plugins/overlayScrollbars/js/jquery.overlayScrollbars.min.js"></script>
+  <script src="../../dist/js/adminlte.js"></script>
+  <!-- <script src="../../dist/js/demo.js"></script> -->
+  <!-- <script src="../../dist/js/pages/dashboard.js"></script> -->
+
+<script>
+
+     const { createApp } = Vue
+
+     createApp({
+       data() {
+         return {
+             ceps: [],
+             clientes: [],
+             cliente_selecionado: [],
+             enderecos_cliente:[],
+             cod_cliente_selecionado: null,
+         }
+       },
+       methods: {
+             selectTb(event, id) {
+
+                   var linhas = document.getElementsByClassName("v-selected");
+                   for (let i = 0; i < linhas.length; i++) {
+                     linhas[i].classList.remove("v-selected")
+                   }
+
+                   var linha = event.currentTarget;
+                   linha.classList.toggle("v-selected");
+
+                   this.cod_cliente_selecionado = id;
+
+                   if(linha != null){
+                       document.getElementById("btExcluir").removeAttribute("disabled");
+                       document.getElementById("btAlterar").removeAttribute("disabled");
+                       document.getElementById("btHistorico").removeAttribute("disabled");
+                   }
+             },
+             editarCliente() {
+                   if (this.cod_cliente_selecionado != null) {
+
+                        this.select_cliente();
+
+                        //if(this.cliente_selecionado != null){
+                        //    this.buscarEnderecos()
+                        // }
+
+
+                        if(document.getElementsByClassName("sidebar-collapse").length > 0){
+                          document.getElementById('frm-edit').classList.replace('form-edicao', 'form-edicao-open-sidebar-collapse');
+                        }else{
+                          document.getElementById('frm-edit').classList.replace('form-edicao', 'form-edicao-open');
+                        }
+
+                        document.getElementById('content-table').style.display='none';
+                   }
+             },
+             atualizarEdit(){
+
+                    if(document.getElementsByClassName("form-edicao-open").length > 0 || document.getElementsByClassName("form-edicao-open-sidebar-collapse").length > 0){
+
+                          if(document.getElementsByClassName("sidebar-collapse").length > 0 && document.getElementsByClassName("form-edicao-open").length > 0){
+                                  document.getElementById('frm-edit').classList.replace('form-edicao-open', 'form-edicao-open-sidebar-collapse');
+                          }
+
+                          if(document.getElementsByClassName("sidebar-collapse").length > 0 && document.getElementsByClassName("form-edicao-open-sidebar-collapse").length > 0){
+                                  document.getElementById('frm-edit').classList.replace('form-edicao-open-sidebar-collapse', 'form-edicao-open');
+                          }
+
+                          if(document.getElementsByClassName("sidebar-collapse").length == 0 && document.getElementsByClassName("form-edicao-open-sidebar-collapse").length > 0){
+                                  document.getElementById('frm-edit').classList.replace('form-edicao-open-sidebar-collapse', 'form-edicao-open');
+                          }
+
+                          if(document.getElementsByClassName("sidebar-collapse").length == 0 && document.getElementsByClassName("form-edicao-open").length > 0){
+                                  document.getElementById('frm-edit').classList.replace('form-edicao-open', 'form-edicao-open-sidebar-collapse');
+                          }
+
+                    }
+
+             },
+             async select_cliente(){
+
+                let cli;
+                const result = await fetch("http://"+location.host+"/cadastro/cliente/find?codigo=" + this.cod_cliente_selecionado)
+
+                    .then(response => response.text())
+                    .then(result => {
+                        cli = result
+                    })
+                    .catch(error => console.log('error', error));
+
+                this.cliente_selecionado = JSON.parse(cli);
+                // console.log(this.cliente_selecionado);
+
+             },
+             buscarCliente(){
+                  this.listarClientes(document.getElementById("txtBuscar").value);
+             },
+             enterBuscar(event){
+                  if(event.key == 'Enter'){
+                      this.buscarCliente();
+                  }
+             },
+             async listarClientes(s){
+                      let cli;
+                        const result = await fetch("http://"+location.host+"/cadastro/cep/find?s="+s)
+
+                            .then(response => response.text())
+                            .then(result => {
+                                cli = result
+                            })
+                            .catch(error => console.log('error', error));
+
+                        this.ceps = JSON.parse(cli);
+
+                         document.getElementById('tabela').classList.remove("d-none");
+                         document.getElementById('loading').style.display='none';
+
+                        // console.log(this.clientes);
+             },
+             salvarCliente(){
+                  this.fecharEdicao();
+             },
+             fecharEdicao(){
+                  document.getElementById('frm-edit').classList.replace('form-edicao-open', 'form-edicao');
+                  document.getElementById('frm-edit').classList.replace('form-edicao-open-sidebar-collapse', 'form-edicao');
+                  document.getElementById('content-table').style.display='block';
+             }
+       },
+       mounted() {
+            this.listarClientes("");
+       },
+     }).mount('#app')
+
+</script>
+
+</body>
+</html>
+
+

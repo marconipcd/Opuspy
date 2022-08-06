@@ -1,0 +1,1362 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta content="width=device-width, initial-scale=1" name="viewport">
+  <title>OpusERP - Clientes</title>
+
+  <link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700&display=fallback"
+        rel="stylesheet">
+  <link href="/static/plugins/fontawesome-free/css/all.min.css" rel="stylesheet">
+  <link href="https://code.ionicframework.com/ionicons/2.0.1/css/ionicons.min.css" rel="stylesheet">
+  <link href="/static/plugins/tempusdominus-bootstrap-4/css/tempusdominus-bootstrap-4.min.css" rel="stylesheet">
+  <link href="/static/plugins/icheck-bootstrap/icheck-bootstrap.min.css" rel="stylesheet">
+  <link href="/static/plugins/jqvmap/jqvmap.min.css" rel="stylesheet">
+  <link href="/static/dist/css/adminlte.min.css" rel="stylesheet">
+  <link href="/static/plugins/overlayScrollbars/css/OverlayScrollbars.min.css" rel="stylesheet">
+  <link href="/static/plugins/daterangepicker/daterangepicker.css" rel="stylesheet">
+  <link href="/static/plugins/summernote/summernote-bs4.min.css" rel="stylesheet">
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css" rel="stylesheet">
+  <link href="https://cdn.datatables.net/1.10.22/css/jquery.dataTables.min.css" rel="stylesheet"/>
+
+  <style type="text/css">
+
+      .table thead th {
+         border-bottom: 1px solid #dee2e6;
+      }
+
+      .table-sm td, .table-sm th {
+          padding: .0.1rem;
+      }
+
+      .table-sm td{
+        border-right: 1px solid #e5e8e8;
+        padding: 0 5px;
+        text-transform: uppercase;
+
+      }
+      .table-sm th{
+        border-right: 1px solid #e5e8e8;
+        padding: 0 5px;
+        /* text-transform: uppercase; */
+        font-family: Arial Unicode MS, Arial, sans-serif;
+        font-size: 13px;
+        color:#5a6066;
+        padding: 5px 6px;
+      }
+
+      .tb_linha {
+          cursor: pointer;
+      }
+      .v-selected td {
+          text-shadow: 0 0.1em 0.1em rgb(0 0 0 / 30%);
+          background: #6ba7e4;
+          background: -moz-linear-gradient(top, #75b0e7 0%, #5f9de1 100%);
+          background: -webkit-gradient(linear, left top, left bottom, color-stop(0%, #75b0e7), color-stop(100%, #5f9de1));
+          background: -webkit-linear-gradient(top, #75b0e7 0%, #5f9de1 100%);
+          background: -o-linear-gradient(top, #75b0e7 0%, #5f9de1 100%);
+          background: -ms-linear-gradient(top, #75b0e7 0%, #5f9de1 100%);
+          color: #fff;
+      }
+      .v-selected:hover {
+          text-shadow: 0 0.1em 0.1em rgb(0 0 0 / 30%);
+          background: #6ba7e4;
+          background: -moz-linear-gradient(top, #75b0e7 0%, #5f9de1 100%);
+          background: -webkit-gradient(linear, left top, left bottom, color-stop(0%, #75b0e7), color-stop(100%, #5f9de1));
+          background: -webkit-linear-gradient(top, #75b0e7 0%, #5f9de1 100%);
+          background: -o-linear-gradient(top, #75b0e7 0%, #5f9de1 100%);
+          background: -ms-linear-gradient(top, #75b0e7 0%, #5f9de1 100%);
+          color: #fff;
+      }
+      tr.v-selected>td:hover {
+          text-shadow: 0 0.1em 0.1em rgb(0 0 0 / 30%);
+          background: #6ba7e4;
+          background: -moz-linear-gradient(top, #75b0e7 0%, #5f9de1 100%);
+          background: -webkit-gradient(linear, left top, left bottom, color-stop(0%, #75b0e7), color-stop(100%, #5f9de1));
+          background: -webkit-linear-gradient(top, #75b0e7 0%, #5f9de1 100%);
+          background: -o-linear-gradient(top, #75b0e7 0%, #5f9de1 100%);
+          background: -ms-linear-gradient(top, #75b0e7 0%, #5f9de1 100%);
+          color: #fff;
+      }
+      .modal-header {
+          cursor: move;
+      }
+
+      thead tr{
+        /* background: linear-gradient(180deg, #c3c3c3,#ffffff); */
+        background: linear-gradient(180deg, #f0f0f0,#f8f8f8);
+        /* cursor:pointer; */
+      }
+
+
+
+
+
+        @media only screen and (min-width:1000px) {
+
+
+
+                    .form-edicao{
+                    -webkit-transform: translate(101%,0);
+                      transform: translate(101%,0);
+                      background: #ffffff;
+                      bottom: 0;
+                      overflow: auto;
+                      position: absolute;
+                      top: 67px;
+                      width: 100%;
+                      z-index: 2000;
+                      padding-top: 15px;
+                      padding-left: 22px;
+                      padding-right: 22px;
+                      transition: -webkit-transform .5s ease-in-out;
+                      transition: transform .5s ease-in-out;
+                      transition: transform .5s ease-in-out, -webkit-transform .5s ease-in-out;
+                      height: 680px;
+                      border-radius: 8px;
+                      border: 1px solid #e5e8e8;
+                      /* display: none; */
+                      /* opacity: 0%; */
+
+
+                  }
+
+                  .form-edicao-open{
+                    -webkit-transform: translate(256px,0);
+                      transform: translate(256px,0);
+                      background: #ffffff;
+                      bottom: 0;
+                      overflow: auto;
+                      position: absolute;
+                      top: 67px;
+                      width: 83%;
+                      z-index: 1030;
+                      padding-top: 15px;
+                      padding-left: 22px;
+                      padding-right: 22px;
+                      transition: -webkit-transform .5s ease-in-out;
+                      transition: transform .5s ease-in-out;
+                      transition: transform .5s ease-in-out, -webkit-transform .5s ease-in-out;
+                      height: 680px;
+                      border-radius: 8px;
+                      border: 1px solid #e5e8e8;
+                      /* opacity: 100%; */
+                      /* display: block; */
+
+                  }
+
+                  .form-edicao-open-sidebar-collapse{
+                    -webkit-transform: translate(85px,0);
+                      transform: translate(85px,0);
+                      background: #ffffff;
+                      bottom: 0;
+                      overflow: auto;
+                      position: absolute;
+                      top: 67px;
+                      width: 94%;
+                      z-index: 1030;
+                      padding-top: 15px;
+                      padding-left: 22px;
+                      padding-right: 22px;
+                      transition: -webkit-transform .5s ease-in-out;
+                      transition: transform .5s ease-in-out;
+                      transition: transform .5s ease-in-out, -webkit-transform .5s ease-in-out;
+                      height: 680px;
+                      border-radius: 8px;
+                      border: 1px solid #e5e8e8;
+                      /* opacity: 100%; */
+                      /* display: block; */
+
+                  }
+
+
+                  .tabela{
+                      height: 642px;
+                    }
+
+
+
+
+                    .d1-busca{
+                      width: 92%;
+                      float: left;
+                      margin-right: 5px;
+                    }
+
+                    .d2-busca{
+                      width: 7%;
+                      float: left;
+                    }
+        }
+
+        @media only screen and (max-width:1000px) {
+
+                    .loading img{
+                      width: 100%;
+                    }
+
+                      .form-edicao{
+                      -webkit-transform: translate(101%,0);
+                        transform: translate(0,-133%);
+                        background: #ffffff;
+                        bottom: 0;
+                        overflow: auto;
+                        position: absolute;
+                        top: 67px;
+                        width: 100%;
+                        z-index: 3000;
+                        padding-top: 15px;
+                        padding-left: 22px;
+                        padding-right: 22px;
+                        transition: -webkit-transform .5s ease-in-out;
+                        transition: transform .5s ease-in-out;
+                        transition: transform .5s ease-in-out, -webkit-transform .5s ease-in-out;
+                        /* opacity: 0%; */
+
+                    }
+
+                    .form-edicao-open-sidebar-collapse{
+                      -webkit-transform: translate(0,0);
+                        transform: translate(0,0);
+                        background: #ffffff;
+                        bottom: 0;
+                        overflow: auto;
+                        position: absolute;
+                        top: 67px;
+                        width: 100%;
+                        z-index: 10;
+                        padding-top: 15px;
+                        padding-left: 22px;
+                        padding-right: 22px;
+                        transition: -webkit-transform .5s ease-in-out;
+                        transition: transform .5s ease-in-out;
+                        transition: transform .5s ease-in-out, -webkit-transform .5s ease-in-out;
+                        /* opacity: 100%; */
+                    }
+
+                    .form-edicao-open{
+                      -webkit-transform: translate(0,0);
+                        transform: translate(0,0);
+                        background: #ffffff;
+                        bottom: 0;
+                        overflow: auto;
+                        position: absolute;
+                        top: 67px;
+                        width: 100%;
+                        z-index: 10;
+                        padding-top: 15px;
+                        padding-left: 22px;
+                        padding-right: 22px;
+                        transition: -webkit-transform .5s ease-in-out;
+                        transition: transform .5s ease-in-out;
+                        transition: transform .5s ease-in-out, -webkit-transform .5s ease-in-out;
+                        /* opacity: 100%; */
+
+                    }
+
+
+                    .tabela{
+                      height: 642px;
+                    }
+
+
+                    .d1-busca{
+                      width: 80%;
+                      float: left;
+                      margin-right: 5px;
+                    }
+
+                    .d2-busca{
+                      width: 18%;
+                      float: left;
+                    }
+        }
+
+
+  </style>
+
+  <script src="https://unpkg.com/vue@3"></script>
+
+</head>
+
+<body class="hold-transition sidebar-mini layout-fixed" style="overflow: hidden;">
+<div class="wrapper" id="app">
+
+  <nav class="main-header navbar navbar-expand navbar-white navbar-light">
+
+
+    <ul class="navbar-nav">
+      <li class="nav-item">
+        <a @click="atualizarEdit()" class="nav-link" data-widget="pushmenu" href="#" role="button"><i
+          class="fas fa-bars"></i></a>
+      </li>
+    </ul>
+    <h2 class="m-0 text-dark"> Clientes</h2>
+
+
+    <div aria-label="Basic example" class="btn-group btn-group-sm" role="group" style="margin-left: 16px;">
+      <button class="btn btn-secondary mr-1" type="button">Novo</button>
+      <button @click="editarCliente()" class="btn btn-secondary mr-1" data-target="#exampleModal" data-toggle="modal"
+              disabled id="btAlterar" type="button">Alterar
+      </button>
+      <button @click="excluirCliente()" class="btn btn-secondary mr-1" disabled id="btExcluir" type="button">Excluir
+      </button>
+      <button class="btn btn-secondary mr-1" type="button">Importar</button>
+      <button class="btn btn-secondary" disabled id="btHistorico" type="button">Histórico</button>
+    </div>
+
+  </nav>
+
+  <aside class="main-sidebar sidebar-dark-primary elevation-4">
+    <!-- Brand Logo -->
+    <a class="brand-link" href="/">
+      <img alt="AdminLTE Logo" class="brand-image img-circle elevation-3" src="/static/dist/img/AdminLTELogo.png"
+           style="opacity: .8">
+      <span class="brand-text font-weight-light">OpusERP</span>
+    </a>
+
+    <!-- Sidebar -->
+    <div class="sidebar">
+      <!-- Sidebar user panel (optional) -->
+      <div class="user-panel mt-3 pb-3 mb-3 d-flex">
+        <div class="image">
+          <img alt="User Image" class="img-circle elevation-2" src="/static/dist/img/user2-160x160.jpg">
+        </div>
+        <div class="info">
+          <a class="d-block" href="#">Marconi César</a>
+        </div>
+      </div>
+
+
+      <!-- Sidebar Menu -->
+      <nav class="mt-2">
+
+        <ul class="nav nav-pills nav-sidebar flex-column" data-accordion="false" data-widget="treeview" role="menu">
+          <li class="nav-item">
+            <a class="nav-link" href="#">
+
+              <i class="nav-icon fa-solid fa-user-group"></i>
+              <p>Cadastros
+                <i class="fas fa-angle-left right"></i>
+              </p>
+            </a>
+            <ul class="nav nav-treeview pl-3">
+              <li class="nav-item">
+                <a class="nav-link" href="cliente">
+                  <i class="fa-solid fa-caret-right mr-2"></i>
+                  <p>Clientes</p>
+                </a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="cep">
+                  <i class="fa-solid fa-caret-right mr-2"></i>
+                  <p>Ceps</p>
+                </a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="cadastro/transportadora">
+                  <i class="fa-solid fa-caret-right mr-2"></i>
+                  <p>Transportadoras</p>
+                </a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="cadastro/fornecedor">
+                  <i class="fa-solid fa-caret-right mr-2"></i>
+                  <p>Fornecedores</p>
+                </a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="cadastro/veiculo">
+                  <i class="fa-solid fa-caret-right mr-2"></i>
+                  <p>Veiculos</p>
+                </a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="cadastro/setor">
+                  <i class="fa-solid fa-caret-right mr-2"></i>
+                  <p>Setores</p>
+                </a>
+              </li>
+
+            </ul>
+          </li>
+
+          <li class="nav-item">
+            <a class="nav-link" href="#">
+              <!-- <i class=" fas fa-copy"></i> -->
+              <i class="nav-icon fa-solid fa-network-wired"></i>
+              <p>Acesso
+                <i class="fas fa-angle-left right"></i>
+                <!-- <span class="badge badge-info right">6</span>-->
+              </p>
+            </a>
+            <ul class="nav nav-treeview">
+              <li class="nav-item">
+
+                <router-link class="nav-link" to="/cadastro/cliente">
+                  <i class="fa-solid fa-caret-right mr-2"></i>
+                  <p>Contratos de Acesso</p>
+                </router-link>
+
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="cadastro/cep">
+                  <i class="fa-solid fa-caret-right mr-2"></i>
+                  <p>Planos de Acesso</p>
+                </a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="cadastro/transportadora">
+                  <i class="fa-solid fa-caret-right mr-2"></i>
+                  <p>Concentradores</p>
+                </a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="cadastro/fornecedor">
+                  <i class="fa-solid fa-caret-right mr-2"></i>
+                  <p>Bases</p>
+                </a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="cadastro/veiculo">
+                  <i class="fa-solid fa-caret-right mr-2"></i>
+                  <p>Caixas de Atendimento</p>
+                </a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="cadastro/setor">
+                  <i class="fa-solid fa-caret-right mr-2"></i>
+                  <p>Central de Assinantes</p>
+                </a>
+              </li>
+
+              <li class="nav-item">
+                <a class="nav-link" href="cadastro/setor">
+                  <i class="fa-solid fa-caret-right mr-2"></i>
+                  <p>OLTs</p>
+                </a>
+              </li>
+
+            </ul>
+          </li>
+
+          <!-- Ordens de Serviço -->
+          <li class="nav-item">
+            <a class="nav-link" href="#">
+              <!-- <i class=" fas fa-copy"></i> -->
+
+              <!-- <i class="nav-icon fa-solid fa-sack-dollar"></i> -->
+              <!-- <i class="fa-solid fa-list-radio"></i> -->
+              <i class="nav-icon fa-solid fa-folder"></i>
+              <p>Ordens de Serviço
+                <i class="fas fa-angle-left right"></i>
+                <!-- <span class="badge badge-info right">6</span>-->
+              </p>
+            </a>
+            <ul class="nav nav-treeview">
+              <li class="nav-item">
+
+                <router-link class="nav-link" to="/cadastro/cliente">
+                  <i class="fa-solid fa-caret-right mr-2"></i>
+                  <p>Contas à Receber</p>
+                </router-link>
+
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="cadastro/cep">
+                  <i class="fa-solid fa-caret-right mr-2"></i>
+                  <p>Formas de Pgto</p>
+                </a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="cadastro/transportadora">
+                  <i class="fa-solid fa-caret-right mr-2"></i>
+                  <p>Preferências</p>
+                </a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="cadastro/fornecedor">
+                  <i class="fa-solid fa-caret-right mr-2"></i>
+                  <p>Haver</p>
+                </a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="cadastro/veiculo">
+                  <i class="fa-solid fa-caret-right mr-2"></i>
+                  <p>Contas à Pagar</p>
+                </a>
+              </li>
+            </ul>
+          </li>
+
+          <!-- Financeiro -->
+          <li class="nav-item">
+            <a class="nav-link" href="#">
+              <!-- <i class=" fas fa-copy"></i> -->
+
+              <i class="nav-icon fa-solid fa-sack-dollar"></i>
+              <p>Financeiro
+                <i class="fas fa-angle-left right"></i>
+                <!-- <span class="badge badge-info right">6</span>-->
+              </p>
+            </a>
+            <ul class="nav nav-treeview">
+              <li class="nav-item">
+
+                <router-link class="nav-link" to="/cadastro/cliente">
+                  <i class="fa-solid fa-caret-right mr-2"></i>
+                  <p>Contas à Receber</p>
+                </router-link>
+
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="cadastro/cep">
+                  <i class="fa-solid fa-caret-right mr-2"></i>
+                  <p>Formas de Pgto</p>
+                </a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="cadastro/transportadora">
+                  <i class="fa-solid fa-caret-right mr-2"></i>
+                  <p>Preferências</p>
+                </a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="cadastro/fornecedor">
+                  <i class="fa-solid fa-caret-right mr-2"></i>
+                  <p>Haver</p>
+                </a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="cadastro/veiculo">
+                  <i class="fa-solid fa-caret-right mr-2"></i>
+                  <p>Contas à Pagar</p>
+                </a>
+              </li>
+            </ul>
+          </li>
+
+          <!-- Pedido -->
+          <li class="nav-item">
+            <a class="nav-link" href="#">
+              <!-- <i class=" fas fa-copy"></i> -->
+
+              <!-- <i class="fa-solid fa-sack-dollar"></i> -->
+              <!-- <i class="fa-solid fa-ballot-check"></i> -->
+              <i class="nav-icon fa-solid fa-cart-arrow-down"></i>
+              <p>Pedidos
+                <i class="fas fa-angle-left right"></i>
+                <!-- <span class="badge badge-info right">6</span>-->
+              </p>
+            </a>
+            <ul class="nav nav-treeview">
+              <li class="nav-item">
+
+                <router-link class="nav-link" to="/cadastro/cliente">
+                  <i class="fa-solid fa-caret-right mr-2"></i>
+                  <p>Pré-venda</p>
+                </router-link>
+
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="cadastro/cep">
+                  <i class="fa-solid fa-caret-right mr-2"></i>
+                  <p>Natureza da Operação</p>
+                </a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="cadastro/transportadora">
+                  <i class="fa-solid fa-caret-right mr-2"></i>
+                  <p>Compras</p>
+                </a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="cadastro/fornecedor">
+                  <i class="fa-solid fa-caret-right mr-2"></i>
+                  <p>RMA</p>
+                </a>
+              </li>
+            </ul>
+          </li>
+
+
+          <!-- NFe -->
+          <li class="nav-item">
+            <a class="nav-link" href="#">
+              <!-- <i class=" fas fa-copy"></i> -->
+
+              <!-- <i class="fa-solid fa-sack-dollar"></i> -->
+              <i class="nav-icon fa-solid fa-file-lines"></i>
+              <p>NFe
+                <i class="fas fa-angle-left right"></i>
+                <!-- <span class="badge badge-info right">6</span>-->
+              </p>
+            </a>
+            <ul class="nav nav-treeview">
+              <li class="nav-item">
+
+                <router-link class="nav-link" to="/cadastro/cliente">
+                  <i class="fa-solid fa-caret-right mr-2"></i>
+                  <p>Nfe Mod-21</p>
+                </router-link>
+
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="cadastro/cep">
+                  <i class="fa-solid fa-caret-right mr-2"></i>
+                  <p>Arquivo Remessa</p>
+                </a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="cadastro/transportadora">
+                  <i class="fa-solid fa-caret-right mr-2"></i>
+                  <p>Nfe Mod-55</p>
+                </a>
+              </li>
+            </ul>
+          </li>
+
+          <!-- Estoque -->
+          <li class="nav-item">
+            <a class="nav-link" href="#">
+              <!-- <i class=" fas fa-copy"></i> -->
+
+              <!-- <i class="fa-solid fa-sack-dollar"></i> -->
+              <!-- <i class="fa-solid fa-file-lines"></i> -->
+              <i class="nav-icon fa-solid fa-boxes-stacked"></i>
+              <p>Estoque
+                <i class="fas fa-angle-left right"></i>
+                <!-- <span class="badge badge-info right">6</span>-->
+              </p>
+            </a>
+            <ul class="nav nav-treeview">
+              <li class="nav-item">
+
+                <router-link class="nav-link" to="/cadastro/cliente">
+                  <i class="fa-solid fa-caret-right mr-2"></i>
+                  <p>Seriais</p>
+                </router-link>
+
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="cadastro/cep">
+                  <i class="fa-solid fa-caret-right mr-2"></i>
+                  <p>Marcas</p>
+                </a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="cadastro/transportadora">
+                  <i class="fa-solid fa-caret-right mr-2"></i>
+                  <p>Tabelas de Preço</p>
+                </a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="cadastro/transportadora">
+                  <i class="fa-solid fa-caret-right mr-2"></i>
+                  <p>Grupos de Produto</p>
+                </a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="cadastro/transportadora">
+                  <i class="fa-solid fa-caret-right mr-2"></i>
+                  <p>Grupo de Produto</p>
+                </a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="cadastro/transportadora">
+                  <i class="fa-solid fa-caret-right mr-2"></i>
+                  <p>Produto</p>
+                </a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="cadastro/transportadora">
+                  <i class="fa-solid fa-caret-right mr-2"></i>
+                  <p>Tipo Item</p>
+                </a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="cadastro/transportadora">
+                  <i class="fa-solid fa-caret-right mr-2"></i>
+                  <p>Gerenciamento de Estoque</p>
+                </a>
+              </li>
+            </ul>
+          </li>
+
+          <!-- CRM -->
+          <li class="nav-item">
+            <a class="nav-link" href="#">
+              <!-- <i class=" fas fa-copy"></i> -->
+
+              <!-- <i class="fa-solid fa-sack-dollar"></i> -->
+              <!-- <i class="nav-icon fa-solid fa-file-lines"></i> -->
+              <i class="nav-icon fa-solid fa-headset"></i>
+              <p>CRM
+                <i class="fas fa-angle-left right"></i>
+                <!-- <span class="badge badge-info right">6</span>-->
+              </p>
+            </a>
+            <ul class="nav nav-treeview">
+              <li class="nav-item">
+
+                <router-link class="nav-link" to="/cadastro/cliente">
+                  <i class="fa-solid fa-caret-right mr-2"></i>
+                  <p>Contatos</p>
+                </router-link>
+
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="cadastro/cep">
+                  <i class="fa-solid fa-caret-right mr-2"></i>
+                  <p>Formas de Contato</p>
+                </a>
+              </li>
+            </ul>
+          </li>
+
+          <!-- Relatorios -->
+          <li class="nav-item">
+            <a class="nav-link" href="#">
+              <!-- <i class=" fas fa-copy"></i> -->
+
+              <!-- <i class="fa-solid fa-sack-dollar"></i> -->
+              <!-- <i class="nav-icon fa-solid fa-file-lines"></i> -->
+              <i class="nav-icon fa-solid fa-chart-pie"></i>
+              <p>Relatórios
+                <i class="fas fa-angle-left right"></i>
+                <!-- <span class="badge badge-info right">6</span>-->
+              </p>
+            </a>
+            <ul class="nav nav-treeview">
+              <li class="nav-item">
+
+                <router-link class="nav-link" to="/cadastro/cliente">
+                  <i class="fa-solid fa-caret-right mr-2"></i>
+                  <p>Relatório de Clientes</p>
+                </router-link>
+
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="cadastro/cep">
+                  <i class="fa-solid fa-caret-right mr-2"></i>
+                  <p>Relatório de Contas à Receber</p>
+                </a>
+              </li>
+
+              <li class="nav-item">
+                <a class="nav-link" href="cadastro/cep">
+                  <i class="fa-solid fa-caret-right mr-2"></i>
+                  <p>Relatório de Contas à Receber</p>
+                </a>
+              </li>
+
+              <li class="nav-item">
+                <a class="nav-link" href="cadastro/cep">
+                  <i class="fa-solid fa-caret-right mr-2"></i>
+                  <p>Relatório de Contas à Receber</p>
+                </a>
+              </li>
+
+              <li class="nav-item">
+                <a class="nav-link" href="cadastro/cep">
+                  <i class="fa-solid fa-caret-right mr-2"></i>
+                  <p>Relatório de Contas à Receber</p>
+                </a>
+              </li>
+
+              <li class="nav-item">
+                <a class="nav-link" href="cadastro/cep">
+                  <i class="fa-solid fa-caret-right mr-2"></i>
+                  <p>Relatório de Contas à Receber</p>
+                </a>
+              </li>
+
+              <li class="nav-item">
+                <a class="nav-link" href="cadastro/cep">
+                  <i class="fa-solid fa-caret-right mr-2"></i>
+                  <p>Relatório de Contas à Receber</p>
+                </a>
+              </li>
+
+
+              <li class="nav-item">
+                <a class="nav-link" href="cadastro/cep">
+                  <i class="fa-solid fa-caret-right mr-2"></i>
+                  <p>Relatório de Contas à Receber</p>
+                </a>
+              </li>
+
+              <li class="nav-item">
+                <a class="nav-link" href="cadastro/cep">
+                  <i class="fa-solid fa-caret-right mr-2"></i>
+                  <p>Relatório de Contas à Receber</p>
+                </a>
+              </li>
+
+              <li class="nav-item">
+                <a class="nav-link" href="cadastro/cep">
+                  <i class="fa-solid fa-caret-right mr-2"></i>
+                  <p>Relatório de Contas à Receber</p>
+                </a>
+              </li>
+
+              <li class="nav-item">
+                <a class="nav-link" href="cadastro/cep">
+                  <i class="fa-solid fa-caret-right mr-2"></i>
+                  <p>Relatório de Contas à Receber</p>
+                </a>
+              </li>
+
+              <li class="nav-item">
+                <a class="nav-link" href="cadastro/cep">
+                  <i class="fa-solid fa-caret-right mr-2"></i>
+                  <p>Relatório de Contas à Receber</p>
+                </a>
+              </li>
+
+              <li class="nav-item">
+                <a class="nav-link" href="cadastro/cep">
+                  <i class="fa-solid fa-caret-right mr-2"></i>
+                  <p>Relatório de Contas à Receber</p>
+                </a>
+              </li>
+
+              <li class="nav-item">
+                <a class="nav-link" href="cadastro/cep">
+                  <i class="fa-solid fa-caret-right mr-2"></i>
+                  <p>Relatório de Contas à Receber</p>
+                </a>
+              </li>
+
+              <li class="nav-item">
+                <a class="nav-link" href="cadastro/cep">
+                  <i class="fa-solid fa-caret-right mr-2"></i>
+                  <p>Relatório de Contas à Receber</p>
+                </a>
+              </li>
+            </ul>
+          </li>
+
+        </ul>
+
+
+      </nav>
+      <!-- /.sidebar-menu -->
+    </div>
+    <!-- /.sidebar -->
+  </aside>
+
+
+  <div class="content-wrapper">
+
+
+    <!-- Main content -->
+    <section class="content" id="content-table">
+      <div class="container-fluid">
+        <div class="row mb-1">
+          <div class="col-12 text-right">
+
+          </div>
+        </div>
+        <div class="row mb-2">
+          <div class="col-12">
+            <div class="d1-busca">
+              <input @keydown="(event) => enterBuscar(event)" class="form-control" id="txtBuscar" placeholder="buscar..."
+                     style="width:100%;" type="text"/>
+            </div>
+            <div class="d2-busca">
+              <button @click="buscarCliente()" class="btn btn-primary" style="width: 100%;" type="button">Buscar
+              </button>
+            </div>
+          </div>
+          <!-- <div class="col-1" style="padding: 0;">
+          </div> -->
+        </div>
+        <div class="row">
+          <div class="col-12">
+            <div class="card tabela" id="tabela">
+              <table
+                class="table table-hover table-sm text-nowrap table-striped table-condensed table-responsive table-responsive-sm">
+                <thead>
+                <tr>
+                  <th class="sorted descending">Código</th>
+                  <th>Nome Razão</th>
+                  <th>CPF/CNPJ</th>
+                  <th>Status</th>
+                  <th>Data de Alteração</th>
+                  <th>Telefone Principal</th>
+                  <th>Telefone Alternativo 1</th>
+                  <th>Telefone Alternativo 2</th>
+                </tr>
+                </thead>
+
+                {% for (ID,NOME_RAZAO, DOC_CPF_CNPJ, STATUS_2, DATA_ALTERACAO, TELEFONE1, TELEFONE2, CELULAR1) in
+                cursor: %}
+                <tr @click="(event) => selectTb(event, {{ ID }})" class="tb_linha">
+                  <td data-label="id">{{ ID }}</td>
+                  <td style="width:100%;">{{ NOME_RAZAO }}</td>
+                  <td>{{ DOC_CPF_CNPJ }}</td>
+                  <td>{{ STATUS_2 }}</td>
+                  <td>{{ DATA_ALTERACAO }}</td>
+                  <td>{{ TELEFONE1 }}</td>
+                  <td>{{ TELEFONE2 }}</td>
+                  <td>{{ CELULAR1 }}</td>
+                </tr>
+                {% endfor %}
+
+
+              </table>
+            </div>
+
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-12">
+            <span>{{ cursor.rowcount }} Registros encontrados</span>
+          </div>
+        </div>
+      </div>
+    </section>
+    <!-- /.content -->
+  </div>
+
+
+  <div class="container-responsive form-edicao" id="frm-edit">
+
+
+    <div class="row pr-3" style="text-align: right;">
+      <div class="col-11">
+
+      </div>
+      <div class="col-1">
+        <button @click="fecharEdicao()" class="btn">
+          <i class="fa-solid fa-xmark"></i>
+        </button>
+      </div>
+    </div>
+
+
+    <form>
+      <div class="mb-1 row">
+        <label class="col-sm-1 col-form-label col-form-label-sm " for="txtCod">Código</label>
+        <div class="col-sm-1">
+          <input :value="cliente_selecionado.id" class="form-control form-control-sm" disabled id="txtCod" type="text">
+        </div>
+
+        <label class="col-sm-1 col-form-label col-form-label-sm "
+               for="txtCadastro">Cadastro</label>
+        <div class="col-sm-2">
+          <input :value="cliente_selecionado.data_cadastro" class="form-control form-control-sm" disabled
+                 id="txtCadastro" type="text">
+        </div>
+
+        <label class="col-sm-1 col-form-label col-form-label-sm "
+               for="txtCadastro">Alteração</label>
+        <div class="col-sm-2">
+          <input :value="cliente_selecionado.data_alteracao" class="form-control form-control-sm" disabled
+                 id="txtCadastro" type="text">
+        </div>
+
+        <label class="col-sm-1 col-form-label col-form-label-sm "
+               for="txtCadastro">Status</label>
+        <div class="col-sm-2">
+          <input :value="cliente_selecionado.status" class="form-control form-control-sm" disabled
+                 id="txtCadastro" type="text">
+        </div>
+      </div>
+      <div class="mb-1 row">
+        <label class="col-sm-1 col-form-label col-form-label-sm "
+               for="inputPassword">CPF/CNPJ</label>
+        <div class="col-sm-2">
+          <input class="form-control form-control-sm" id="txtNome" type="text"
+                 v-model="cliente_selecionado.doc_cpf_cnpj">
+        </div>
+
+        <label class="col-sm-2 col-form-label col-form-label-sm " for="inputPassword">Insc.
+          Estadual/RG</label>
+        <div class="col-sm-2">
+          <input :value="cliente_selecionado.doc_rg_insc_estadual" class="form-control form-control-sm" id="txtNome"
+                 type="text">
+        </div>
+
+        <label class="col-sm-2 col-form-label col-form-label-sm " for="inputPassword">Orgão
+          Emissor</label>
+        <div class="col-sm-2">
+          <input :value="cliente_selecionado.orgao_emissor_rg" class="form-control form-control-sm" id="txtNome"
+                 type="text">
+        </div>
+      </div>
+      <div class="mb-1 row">
+        <label class="col-sm-1 col-form-label col-form-label-sm " for="txtNome">Nome</label>
+        <div class="col-sm-6">
+          <input class="form-control form-control-sm" id="txtNome" type="text"
+                 v-model="cliente_selecionado.nome_razao">
+        </div>
+        <div class="col-sm-1">
+          <input :value="cliente_selecionado.tratamento" class="form-control form-control-sm" id="txtNome"
+                 type="text">
+        </div>
+        <div class="col-sm-3">
+          <input :value="cliente_selecionado.contato" class="form-control form-control-sm" id="txtNome"
+                 type="text">
+        </div>
+      </div>
+
+      <div class="mb-1 row">
+        <label class="col-sm-1 col-form-label col-form-label-sm " for="txtNome">Fantasia</label>
+        <div class="col-sm-10">
+          <input :value="cliente_selecionado.fantasia" class="form-control form-control-sm" id="txtNome"
+                 type="text">
+        </div>
+      </div>
+      <div class="mb-1 row">
+        <label class="col-sm-1 col-form-label col-form-label-sm " for="txtNome">Contato</label>
+        <div class="col-sm-10">
+          <input :value="cliente_selecionado.contato" class="form-control form-control-sm" id="txtNome"
+                 type="text">
+        </div>
+      </div>
+
+      <div class="ml-1 mb-1 row">
+        <nav>
+          <div class="nav nav-tabs" id="nav-tab" role="tablist">
+            <a aria-controls="nav-principal" aria-selected="true" class="nav-item nav-link active"
+               data-toggle="tab" href="#nav-principal" id="nav-principal-tab"
+               role="tab">Principal</a>
+            <a aria-controls="nav-enderecos" aria-selected="false" class="nav-item nav-link"
+               data-toggle="tab" href="#nav-enderecos" id="nav-enderecos-tab"
+               role="tab">Endereços</a>
+            <a aria-controls="nav-outrasinfo" aria-selected="false" class="nav-item nav-link"
+               data-toggle="tab" href="#nav-outrasinfo" id="nav-outrasinfo-tab"
+               role="tab">Outras Informações</a>
+            <a aria-controls="nav-infoaluno" aria-selected="false" class="nav-item nav-link"
+               data-toggle="tab" href="#nav-infoaluno" id="nav-infoaluno-tab"
+               role="tab">Info. Aluno</a>
+          </div>
+        </nav>
+      </div>
+
+      <div class="tab-content" id="nav-tabContent">
+
+
+        <div aria-labelledby="nav-principal-tab" class="tab-pane fade show active " id="nav-principal" role="tabpanel">
+          <div class="card p-2">
+            <div class="mb-1 row">
+              <label class="col-sm-1 col-form-label col-form-label-sm "
+                     for="txtSexo">Sexo</label>
+              <div class="col-sm-2">
+                <select :value="cliente_selecionado.sexo" class="form-control"
+                        id="txtSexo">
+                  <option>MASCULINO</option>
+                  <option>FEMININO</option>
+                </select>
+              </div>
+
+              <label class="col-sm-2 col-form-label col-form-label-sm " for="txtNome">Data
+                de nascimento</label>
+              <div class="col-sm-2">
+                <input :value="cliente_selecionado.data_nascimento" class="form-control form-control-sm" id="txtNome"
+                       type="date">
+              </div>
+
+              <label class="col-sm-1 col-form-label col-form-label-sm "
+                     for="txtNome">Profissão</label>
+              <div class="col-sm-2">
+                <select :value="cliente_selecionado.profissao" class="form-control"
+                        id="txtSexo">
+
+                  <option>AGRICULTOR</option>
+                  <option>ADVOGADO</option>
+                  <option>APOSENTADO</option>
+                  <option>AUTONOMO</option>
+                  <option>AUX. ADMINISTRATIVO</option>
+                  <option>AUX. DE PRODUÇÃO</option>
+                  <option>ASSISTENTE SOCIAL</option>
+                  <option>BOMBEIRO</option>
+                  <option>BANCARIO</option>
+                  <option>COSTUREIRA</option>
+                  <option>DOMESTICA</option>
+                  <option>DESIGNER</option>
+                  <option>ELETRICISTA</option>
+                  <option>EMPILHADOR</option>
+                  <option>EMPRESARIO</option>
+                  <option>ENGENHEIRO</option>
+                  <option>ESTUDANTE</option>
+                  <option>MECANICO</option>
+                  <option>METALURGICO</option>
+                  <option>MEDICO</option>
+                  <option>MILITAR</option>
+                  <option>MOTORISTA</option>
+                  <option>MONITORA</option>
+                  <option>NAO INFORMADO</option>
+                  <option>PADRE</option>
+                  <option>PASTOR</option>
+                  <option>PADEIRO</option>
+                  <option>PEDREIRO</option>
+                  <option>POLICIAL</option>
+                  <option>PROFESSOR</option>
+                  <option>PSICOLOGO</option>
+                  <option>SERVIDOR PUBLICO</option>
+                  <option>TAXISTA</option>
+                  <option>TECNICO EM INFORMATICA</option>
+                  <option>TECNICO EM ENFERMAGEM</option>
+                  <option>VETERINARIO</option>
+                  <option>VENDEDOR</option>
+                  <option>VIGILANTE</option>
+                </select>
+              </div>
+            </div>
+
+            <div class="mb-1 row">
+              <label class="col-sm-1 col-form-label col-form-label-sm " for="txtNome">Tel.
+                Princ.</label>
+              <div class="col-sm-1">
+                <input :value="cliente_selecionado.ddd_fone1" class="form-control form-control-sm" id="txtNome"
+                       type="text">
+              </div>
+
+              <div class="col-sm-2">
+                <input :value="cliente_selecionado.telefone1" class="form-control form-control-sm" id="txtNome"
+                       type="text">
+              </div>
+
+              <label class="col-sm-1 col-form-label col-form-label-sm " for="txtNome">Tel.
+                Altern.</label>
+              <div class="col-sm-1">
+                <input :value="cliente_selecionado.ddd_fone2" class="form-control form-control-sm" id="txtNome"
+                       type="text">
+              </div>
+
+              <div class="col-sm-2">
+                <input :value="cliente_selecionado.telefone2" class="form-control form-control-sm" id="txtNome"
+                       type="text">
+              </div>
+            </div>
+
+
+            <div class="mb-1 row">
+              <label class="col-sm-1 col-form-label col-form-label-sm " for="txtNome">Tel.
+                Altern.</label>
+              <div class="col-sm-1">
+                <input :value="cliente_selecionado.ddd_cel1" class="form-control form-control-sm" id="txtNome"
+                       type="text">
+              </div>
+
+              <div class="col-sm-2">
+                <input :value="cliente_selecionado.celular1" class="form-control form-control-sm" id="txtNome"
+                       type="text">
+              </div>
+
+              <label class="col-sm-1 col-form-label col-form-label-sm " for="txtNome">Tel.
+                Altern.</label>
+              <div class="col-sm-1">
+                <input :value="cliente_selecionado.ddd_cel2" class="form-control form-control-sm" id="txtNome"
+                       type="text">
+              </div>
+
+              <div class="col-sm-2">
+                <input :value="cliente_selecionado.celular2" class="form-control form-control-sm" id="txtNome"
+                       type="text">
+              </div>
+            </div>
+
+
+            <div class="mb-1 row">
+              <label class="col-sm-1 col-form-label col-form-label-sm "
+                     for="txtNome">Instagram</label>
+              <div class="col-sm-3">
+                <input :value="cliente_selecionado.rede_social" class="form-control form-control-sm" id="txtNome"
+                       type="text">
+              </div>
+            </div>
+
+
+            <div class="mb-1 row">
+              <label class="col-sm-1 col-form-label col-form-label-sm "
+                     for="txtNome">Email 1</label>
+              <div class="col-sm-3">
+                <input :value="cliente_selecionado.email" class="form-control form-control-sm" id="txtNome"
+                       type="text">
+              </div>
+
+              <label class="col-sm-1 col-form-label col-form-label-sm "
+                     for="txtNome">Site</label>
+              <div class="col-sm-3">
+                <input :value="cliente_selecionado.site" class="form-control form-control-sm" id="txtNome"
+                       type="text">
+              </div>
+            </div>
+
+
+            <div class="row">
+              <label class="col-sm-1 col-form-label col-form-label-sm "
+                     for="txtNome">Email 2</label>
+              <div class="col-sm-3">
+                <input :value="cliente_selecionado.msn" class="form-control form-control-sm" id="txtNome"
+                       type="text">
+              </div>
+
+              <label class="col-sm-1 col-form-label col-form-label-sm " for="txtNome">Rede
+                Social</label>
+              <div class="col-sm-3">
+                <input :value="cliente_selecionado.rede_social" class="form-control form-control-sm" id="txtNome"
+                       type="text">
+              </div>
+            </div>
+
+
+            <div class="mb-1 row">
+              <label class="col-sm-1 col-form-label col-form-label-sm " for="txtNome">CRM
+                Aniv.</label>
+              <div class="col-sm-1">
+                <input class="form-control form-control-sm" id="txtNome" type="text">
+              </div>
+            </div>
+
+
+            <div class="mb-1 row">
+              <label class="col-sm-1 col-form-label col-form-label-sm "
+                     for="txtNome">Categoria</label>
+              <div class="col-sm-2">
+                <input class="form-control form-control-sm" id="txtNome" type="text"
+                >
+              </div>
+
+              <label class="col-sm-2 col-form-label col-form-label-sm " for="txtNome">Como nos Conheceu ?</label>
+              <div class="col-sm-3">
+                <input class="form-control form-control-sm" id="txtNome" type="text">
+              </div>
+            </div>
+
+
+            <div class="mb-1 row">
+              <label class="col-sm-1 col-form-label col-form-label-sm" for="txtNome">Observação</label>
+              <div class="col-sm-6">
+                                  <textarea :value="cliente_selecionado.obs" class="form-control form-control-sm"
+                                            cols="15"
+                                            rows="1"></textarea>
+              </div>
+            </div>
+          </div>
+        </div>
+
+
+      </div>
+
+
+    </form>
+
+    <div class="row">
+      <button class="btn btn-primary" type="button">Ok</button>
+    </div>
+
+  </div>
+
+  <aside class="control-sidebar control-sidebar-dark">
+  </aside>
+
+</div>
+
+
+<script src="/static/plugins/jquery/jquery.min.js"></script>
+<script src="/static/plugins/jquery-ui/jquery-ui.min.js"></script>
+<script>
+    $.widget.bridge('uibutton', $.ui.button)
+
+</script>
+<script src="/static/plugins/bootstrap/js/bootstrap.bundle.min.js"></script>
+<script src="/static/plugins/chart.js/Chart.min.js"></script>
+<script src="/static/plugins/sparklines/sparkline.js"></script>
+<script src="/static/plugins/jqvmap/jquery.vmap.min.js"></script>
+<script src="/static/plugins/jqvmap/maps/jquery.vmap.usa.js"></script>
+<script src="/static/plugins/jquery-knob/jquery.knob.min.js"></script>
+<script src="/static/plugins/moment/moment.min.js"></script>
+<script src="/static/plugins/daterangepicker/daterangepicker.js"></script>
+<script src="/static/plugins/tempusdominus-bootstrap-4/js/tempusdominus-bootstrap-4.min.js"></script>
+<script src="/static/plugins/summernote/summernote-bs4.min.js"></script>
+<script src="/static/plugins/overlayScrollbars/js/jquery.overlayScrollbars.min.js"></script>
+<script src="/static/dist/js/adminlte.js"></script>
+
+
+<script>
+
+     const { createApp } = Vue
+
+     createApp({
+       data() {
+         return {
+            clientes: [],
+             cliente_selecionado: [],
+             enderecos_cliente:[],
+             cod_cliente_selecionado: null,
+         }
+       },
+       methods: {
+             selectTb(event, id) {
+
+                   var linhas = document.getElementsByClassName("v-selected");
+                   for (let i = 0; i < linhas.length; i++) {
+                     linhas[i].classList.remove("v-selected")
+                   }
+
+                   var linha = event.currentTarget;
+                   linha.classList.toggle("v-selected");
+
+                   this.cod_cliente_selecionado = id;
+
+                   if(linha != null){
+                       document.getElementById("btExcluir").removeAttribute("disabled");
+                       document.getElementById("btAlterar").removeAttribute("disabled");
+                       document.getElementById("btHistorico").removeAttribute("disabled");
+                   }
+             },
+             async select_cliente(){
+
+                let cli;
+                const result = await fetch("http://127.0.0.1:5000/selecionar_cliente/" + this.cod_cliente_selecionado)
+
+                    .then(response => response.text())
+                    .then(result => {
+                        cli = result
+                    })
+                    .catch(error => console.log('error', error));
+
+                //console.log(cli);
+                this.cliente_selecionado = JSON.parse(cli);
+                //this.cliente_selecionado = JSON.parse(cli);
+                console.log(this.cliente_selecionado);
+
+             },
+             editarCliente() {
+                   if (this.cod_cliente_selecionado != null) {
+
+                        this.select_cliente();
+
+                        if(document.getElementsByClassName("sidebar-collapse").length > 0){
+                          document.getElementById('frm-edit').classList.replace('form-edicao', 'form-edicao-open-sidebar-collapse');
+                        }else{
+                          document.getElementById('frm-edit').classList.replace('form-edicao', 'form-edicao-open');
+                        }
+
+                        document.getElementById('content-table').style.display='none';
+                   }
+             },
+             fecharEdicao(){
+                  document.getElementById('frm-edit').classList.replace('form-edicao-open', 'form-edicao');
+                  document.getElementById('frm-edit').classList.replace('form-edicao-open-sidebar-collapse', 'form-edicao');
+                  document.getElementById('content-table').style.display='block';
+             }
+       },
+       mounted() {
+
+       },
+     }).mount('#app')
+
+
+</script>
+
+
+</body>
+</html>
+
+

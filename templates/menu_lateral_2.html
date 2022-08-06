@@ -1,0 +1,599 @@
+<aside class="main-sidebar sidebar-dark-primary elevation-4">
+    <!-- Brand Logo -->
+    <a href="/" class="brand-link">
+      <img src="../../dist/img/AdminLTELogo.png" alt="AdminLTE Logo" class="brand-image img-circle elevation-3" style="opacity: .8">
+      <span class="brand-text font-weight-light">OpusERP</span>
+    </a>
+
+    <!-- Sidebar -->
+    <div class="sidebar">
+      <!-- Sidebar user panel (optional) -->
+      <div class="user-panel mt-3 pb-3 mb-3 d-flex">
+        <div class="image">
+          <img src="../../dist/img/user2-160x160.jpg" class="img-circle elevation-2" alt="User Image">
+        </div>
+        <div class="info">
+          <a href="#" class="d-block">Marconi César</a>
+        </div>
+      </div>
+
+      <!-- SidebarSearch Form
+      <div class="form-inline">
+        <div class="input-group" data-widget="sidebar-search">
+          <input class="form-control form-control-sidebar" type="search" placeholder="Search" aria-label="Search">
+          <div class="input-group-append">
+            <button class="btn btn-sidebar">
+              <i class="fas fa-search fa-fw"></i>
+            </button>
+          </div>
+        </div>
+      </div>-->
+
+      <!-- Sidebar Menu -->
+      <nav class="mt-2">
+         <!-- <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu" data-accordion="false">
+          <li class="nav-item">
+            <a href="#" class="nav-link">
+              <i class="nav-icon fas fa-copy"></i>
+              <p>Cadastros
+                <i class="fas fa-angle-left right"></i>
+                <!-- <span class="badge badge-info right">6</span>
+              </p>
+            </a>
+            <ul class="nav nav-treeview">
+              <li class="nav-item">
+                <a href="cliente" class="nav-link">
+                  <i class="far fa-circle nav-icon"></i>
+                  <p>Clientes</p>
+                </a>
+              </li>
+              <li class="nav-item">
+                <a href="cep" class="nav-link">
+                  <i class="far fa-circle nav-icon"></i>
+                  <p>CEPs</p>
+                </a>
+              </li>
+              <li class="nav-item">
+                <a href="transportadora" class="nav-link">
+                  <i class="far fa-circle nav-icon"></i>
+                  <p>Transportadoras</p>
+                </a>
+              </li>
+              <li class="nav-item">
+                <a href="fornecedor" class="nav-link">
+                  <i class="far fa-circle nav-icon"></i>
+                  <p>Fornecedores</p>
+                </a>
+              </li>
+              <li class="nav-item">
+                <a href="veiculo" class="nav-link">
+                  <i class="far fa-circle nav-icon"></i>
+                  <p>Veiculos</p>
+                </a>
+              </li>
+              <li class="nav-item">
+                <a href="setor" class="nav-link">
+                  <i class="far fa-circle nav-icon"></i>
+                  <p>Setores</p>
+                </a>
+              </li>
+
+            </ul>
+          </li>
+
+        </ul> -->
+
+        <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu" data-accordion="false">
+          <li class="nav-item">
+            <a href="#" class="nav-link">
+
+              <i class="nav-icon fa-solid fa-user-group"></i>
+              <p>Cadastros
+                <i class="fas fa-angle-left right"></i>
+              </p>
+            </a>
+            <ul class="nav nav-treeview pl-3">
+              <li class="nav-item">
+                  <a href="cliente" class="nav-link">
+                    <i class="fa-solid fa-caret-right mr-2"></i>
+                    <p>Clientes</p>
+                  </a>
+              </li>
+              <li class="nav-item">
+                <a href="cep" class="nav-link">
+                  <i class="fa-solid fa-caret-right mr-2"></i>
+                  <p>Ceps</p>
+                </a>
+              </li>
+              <li class="nav-item">
+                <a href="cadastro/transportadora" class="nav-link">
+                  <i class="fa-solid fa-caret-right mr-2"></i>
+                  <p>Transportadoras</p>
+                </a>
+              </li>
+              <li class="nav-item">
+                <a href="cadastro/fornecedor" class="nav-link">
+                  <i class="fa-solid fa-caret-right mr-2"></i>
+                  <p>Fornecedores</p>
+                </a>
+              </li>
+              <li class="nav-item">
+                <a href="cadastro/veiculo" class="nav-link">
+                  <i class="fa-solid fa-caret-right mr-2"></i>
+                  <p>Veiculos</p>
+                </a>
+              </li>
+              <li class="nav-item">
+                <a href="cadastro/setor" class="nav-link">
+                  <i class="fa-solid fa-caret-right mr-2"></i>
+                  <p>Setores</p>
+                </a>
+              </li>
+
+            </ul>
+          </li>
+
+          <li class="nav-item">
+            <a href="#" class="nav-link">
+              <!-- <i class=" fas fa-copy"></i> -->
+              <i class="nav-icon fa-solid fa-network-wired"></i>
+              <p>Acesso
+                <i class="fas fa-angle-left right"></i>
+                <!-- <span class="badge badge-info right">6</span>-->
+              </p>
+            </a>
+            <ul class="nav nav-treeview">
+              <li class="nav-item">
+
+                  <router-link to="/cadastro/cliente" class="nav-link">
+                    <i class="fa-solid fa-caret-right mr-2"></i>
+                    <p>Contratos de Acesso</p>
+                  </router-link>
+
+              </li>
+              <li class="nav-item">
+                <a href="cadastro/cep" class="nav-link">
+                  <i class="fa-solid fa-caret-right mr-2"></i>
+                  <p>Planos de Acesso</p>
+                </a>
+              </li>
+              <li class="nav-item">
+                <a href="cadastro/transportadora" class="nav-link">
+                  <i class="fa-solid fa-caret-right mr-2"></i>
+                  <p>Concentradores</p>
+                </a>
+              </li>
+              <li class="nav-item">
+                <a href="cadastro/fornecedor" class="nav-link">
+                  <i class="fa-solid fa-caret-right mr-2"></i>
+                  <p>Bases</p>
+                </a>
+              </li>
+              <li class="nav-item">
+                <a href="cadastro/veiculo" class="nav-link">
+                  <i class="fa-solid fa-caret-right mr-2"></i>
+                  <p>Caixas de Atendimento</p>
+                </a>
+              </li>
+              <li class="nav-item">
+                <a href="cadastro/setor" class="nav-link">
+                  <i class="fa-solid fa-caret-right mr-2"></i>
+                  <p>Central de Assinantes</p>
+                </a>
+              </li>
+
+              <li class="nav-item">
+                <a href="cadastro/setor" class="nav-link">
+                  <i class="fa-solid fa-caret-right mr-2"></i>
+                  <p>OLTs</p>
+                </a>
+              </li>
+
+            </ul>
+          </li>
+
+          <!-- Ordens de Serviço -->
+          <li class="nav-item">
+            <a href="#" class="nav-link">
+              <!-- <i class=" fas fa-copy"></i> -->
+
+              <!-- <i class="nav-icon fa-solid fa-sack-dollar"></i> -->
+              <!-- <i class="fa-solid fa-list-radio"></i> -->
+              <i class="nav-icon fa-solid fa-folder"></i>
+              <p>Ordens de Serviço
+                <i class="fas fa-angle-left right"></i>
+                <!-- <span class="badge badge-info right">6</span>-->
+              </p>
+            </a>
+            <ul class="nav nav-treeview">
+              <li class="nav-item">
+
+                  <router-link to="/cadastro/cliente" class="nav-link">
+                    <i class="fa-solid fa-caret-right mr-2"></i>
+                    <p>Contas à Receber</p>
+                  </router-link>
+
+              </li>
+              <li class="nav-item">
+                <a href="cadastro/cep" class="nav-link">
+                  <i class="fa-solid fa-caret-right mr-2"></i>
+                  <p>Formas de Pgto</p>
+                </a>
+              </li>
+              <li class="nav-item">
+                <a href="cadastro/transportadora" class="nav-link">
+                  <i class="fa-solid fa-caret-right mr-2"></i>
+                  <p>Preferências</p>
+                </a>
+              </li>
+              <li class="nav-item">
+                <a href="cadastro/fornecedor" class="nav-link">
+                  <i class="fa-solid fa-caret-right mr-2"></i>
+                  <p>Haver</p>
+                </a>
+              </li>
+              <li class="nav-item">
+                <a href="cadastro/veiculo" class="nav-link">
+                  <i class="fa-solid fa-caret-right mr-2"></i>
+                  <p>Contas à Pagar</p>
+                </a>
+              </li>
+            </ul>
+          </li>
+
+          <!-- Financeiro -->
+          <li class="nav-item">
+            <a href="#" class="nav-link">
+              <!-- <i class=" fas fa-copy"></i> -->
+
+              <i class="nav-icon fa-solid fa-sack-dollar"></i>
+              <p>Financeiro
+                <i class="fas fa-angle-left right"></i>
+                <!-- <span class="badge badge-info right">6</span>-->
+              </p>
+            </a>
+            <ul class="nav nav-treeview">
+              <li class="nav-item">
+
+                  <router-link to="/cadastro/cliente" class="nav-link">
+                    <i class="fa-solid fa-caret-right mr-2"></i>
+                    <p>Contas à Receber</p>
+                  </router-link>
+
+              </li>
+              <li class="nav-item">
+                <a href="cadastro/cep" class="nav-link">
+                  <i class="fa-solid fa-caret-right mr-2"></i>
+                  <p>Formas de Pgto</p>
+                </a>
+              </li>
+              <li class="nav-item">
+                <a href="cadastro/transportadora" class="nav-link">
+                  <i class="fa-solid fa-caret-right mr-2"></i>
+                  <p>Preferências</p>
+                </a>
+              </li>
+              <li class="nav-item">
+                <a href="cadastro/fornecedor" class="nav-link">
+                  <i class="fa-solid fa-caret-right mr-2"></i>
+                  <p>Haver</p>
+                </a>
+              </li>
+              <li class="nav-item">
+                <a href="cadastro/veiculo" class="nav-link">
+                  <i class="fa-solid fa-caret-right mr-2"></i>
+                  <p>Contas à Pagar</p>
+                </a>
+              </li>
+            </ul>
+          </li>
+
+          <!-- Pedido -->
+          <li class="nav-item">
+            <a href="#" class="nav-link">
+              <!-- <i class=" fas fa-copy"></i> -->
+
+              <!-- <i class="fa-solid fa-sack-dollar"></i> -->
+              <!-- <i class="fa-solid fa-ballot-check"></i> -->
+              <i class="nav-icon fa-solid fa-cart-arrow-down"></i>
+              <p>Pedidos
+                <i class="fas fa-angle-left right"></i>
+                <!-- <span class="badge badge-info right">6</span>-->
+              </p>
+            </a>
+            <ul class="nav nav-treeview">
+              <li class="nav-item">
+
+                  <router-link to="/cadastro/cliente" class="nav-link">
+                    <i class="fa-solid fa-caret-right mr-2"></i>
+                    <p>Pré-venda</p>
+                  </router-link>
+
+              </li>
+              <li class="nav-item">
+                <a href="cadastro/cep" class="nav-link">
+                  <i class="fa-solid fa-caret-right mr-2"></i>
+                  <p>Natureza da Operação</p>
+                </a>
+              </li>
+              <li class="nav-item">
+                <a href="cadastro/transportadora" class="nav-link">
+                  <i class="fa-solid fa-caret-right mr-2"></i>
+                  <p>Compras</p>
+                </a>
+              </li>
+              <li class="nav-item">
+                <a href="cadastro/fornecedor" class="nav-link">
+                  <i class="fa-solid fa-caret-right mr-2"></i>
+                  <p>RMA</p>
+                </a>
+              </li>
+            </ul>
+          </li>
+
+
+          <!-- NFe -->
+           <li class="nav-item">
+            <a href="#" class="nav-link">
+              <!-- <i class=" fas fa-copy"></i> -->
+
+              <!-- <i class="fa-solid fa-sack-dollar"></i> -->
+              <i class="nav-icon fa-solid fa-file-lines"></i>
+              <p>NFe
+                <i class="fas fa-angle-left right"></i>
+                <!-- <span class="badge badge-info right">6</span>-->
+              </p>
+            </a>
+            <ul class="nav nav-treeview">
+              <li class="nav-item">
+
+                  <router-link to="/cadastro/cliente" class="nav-link">
+                    <i class="fa-solid fa-caret-right mr-2"></i>
+                    <p>Nfe Mod-21</p>
+                  </router-link>
+
+              </li>
+              <li class="nav-item">
+                <a href="cadastro/cep" class="nav-link">
+                  <i class="fa-solid fa-caret-right mr-2"></i>
+                  <p>Arquivo Remessa</p>
+                </a>
+              </li>
+              <li class="nav-item">
+                <a href="cadastro/transportadora" class="nav-link">
+                  <i class="fa-solid fa-caret-right mr-2"></i>
+                  <p>Nfe Mod-55</p>
+                </a>
+              </li>
+            </ul>
+          </li>
+
+          <!-- Estoque -->
+          <li class="nav-item">
+            <a href="#" class="nav-link">
+              <!-- <i class=" fas fa-copy"></i> -->
+
+              <!-- <i class="fa-solid fa-sack-dollar"></i> -->
+              <!-- <i class="fa-solid fa-file-lines"></i> -->
+              <i class="nav-icon fa-solid fa-boxes-stacked"></i>
+              <p>Estoque
+                <i class="fas fa-angle-left right"></i>
+                <!-- <span class="badge badge-info right">6</span>-->
+              </p>
+            </a>
+            <ul class="nav nav-treeview">
+              <li class="nav-item">
+
+                  <router-link to="/cadastro/cliente" class="nav-link">
+                    <i class="fa-solid fa-caret-right mr-2"></i>
+                    <p>Seriais</p>
+                  </router-link>
+
+              </li>
+              <li class="nav-item">
+                <a href="cadastro/cep" class="nav-link">
+                  <i class="fa-solid fa-caret-right mr-2"></i>
+                  <p>Marcas</p>
+                </a>
+              </li>
+              <li class="nav-item">
+                <a href="cadastro/transportadora" class="nav-link">
+                  <i class="fa-solid fa-caret-right mr-2"></i>
+                  <p>Tabelas de Preço</p>
+                </a>
+              </li>
+              <li class="nav-item">
+                <a href="cadastro/transportadora" class="nav-link">
+                  <i class="fa-solid fa-caret-right mr-2"></i>
+                  <p>Grupos de Produto</p>
+                </a>
+              </li>
+              <li class="nav-item">
+                <a href="cadastro/transportadora" class="nav-link">
+                  <i class="fa-solid fa-caret-right mr-2"></i>
+                  <p>Grupo de Produto</p>
+                </a>
+              </li>
+              <li class="nav-item">
+                <a href="cadastro/transportadora" class="nav-link">
+                  <i class="fa-solid fa-caret-right mr-2"></i>
+                  <p>Produto</p>
+                </a>
+              </li>
+              <li class="nav-item">
+                <a href="cadastro/transportadora" class="nav-link">
+                  <i class="fa-solid fa-caret-right mr-2"></i>
+                  <p>Tipo Item</p>
+                </a>
+              </li>
+              <li class="nav-item">
+                <a href="cadastro/transportadora" class="nav-link">
+                  <i class="fa-solid fa-caret-right mr-2"></i>
+                  <p>Gerenciamento de Estoque</p>
+                </a>
+              </li>
+            </ul>
+          </li>
+
+          <!-- CRM -->
+           <li class="nav-item">
+            <a href="#" class="nav-link">
+              <!-- <i class=" fas fa-copy"></i> -->
+
+              <!-- <i class="fa-solid fa-sack-dollar"></i> -->
+              <!-- <i class="nav-icon fa-solid fa-file-lines"></i> -->
+              <i class="nav-icon fa-solid fa-headset"></i>
+              <p>CRM
+                <i class="fas fa-angle-left right"></i>
+                <!-- <span class="badge badge-info right">6</span>-->
+              </p>
+            </a>
+            <ul class="nav nav-treeview">
+              <li class="nav-item">
+
+                  <router-link to="/cadastro/cliente" class="nav-link">
+                    <i class="fa-solid fa-caret-right mr-2"></i>
+                    <p>Contatos</p>
+                  </router-link>
+
+              </li>
+              <li class="nav-item">
+                <a href="cadastro/cep" class="nav-link">
+                  <i class="fa-solid fa-caret-right mr-2"></i>
+                  <p>Formas de Contato</p>
+                </a>
+              </li>
+            </ul>
+          </li>
+
+          <!-- Relatorios -->
+          <li class="nav-item">
+            <a href="#" class="nav-link">
+              <!-- <i class=" fas fa-copy"></i> -->
+
+              <!-- <i class="fa-solid fa-sack-dollar"></i> -->
+              <!-- <i class="nav-icon fa-solid fa-file-lines"></i> -->
+              <i class="nav-icon fa-solid fa-chart-pie"></i>
+              <p>Relatórios
+                <i class="fas fa-angle-left right"></i>
+                <!-- <span class="badge badge-info right">6</span>-->
+              </p>
+            </a>
+            <ul class="nav nav-treeview">
+              <li class="nav-item">
+
+                  <router-link to="/cadastro/cliente" class="nav-link">
+                    <i class="fa-solid fa-caret-right mr-2"></i>
+                    <p>Relatório de Clientes</p>
+                  </router-link>
+
+              </li>
+              <li class="nav-item">
+                <a href="cadastro/cep" class="nav-link">
+                  <i class="fa-solid fa-caret-right mr-2"></i>
+                  <p>Relatório de Contas à Receber</p>
+                </a>
+              </li>
+
+              <li class="nav-item">
+                <a href="cadastro/cep" class="nav-link">
+                  <i class="fa-solid fa-caret-right mr-2"></i>
+                  <p>Relatório de Contas à Receber</p>
+                </a>
+              </li>
+
+              <li class="nav-item">
+                <a href="cadastro/cep" class="nav-link">
+                  <i class="fa-solid fa-caret-right mr-2"></i>
+                  <p>Relatório de Contas à Receber</p>
+                </a>
+              </li>
+
+              <li class="nav-item">
+                <a href="cadastro/cep" class="nav-link">
+                  <i class="fa-solid fa-caret-right mr-2"></i>
+                  <p>Relatório de Contas à Receber</p>
+                </a>
+              </li>
+
+              <li class="nav-item">
+                <a href="cadastro/cep" class="nav-link">
+                  <i class="fa-solid fa-caret-right mr-2"></i>
+                  <p>Relatório de Contas à Receber</p>
+                </a>
+              </li>
+
+              <li class="nav-item">
+                <a href="cadastro/cep" class="nav-link">
+                  <i class="fa-solid fa-caret-right mr-2"></i>
+                  <p>Relatório de Contas à Receber</p>
+                </a>
+              </li>
+
+
+              <li class="nav-item">
+                <a href="cadastro/cep" class="nav-link">
+                  <i class="fa-solid fa-caret-right mr-2"></i>
+                  <p>Relatório de Contas à Receber</p>
+                </a>
+              </li>
+
+              <li class="nav-item">
+                <a href="cadastro/cep" class="nav-link">
+                  <i class="fa-solid fa-caret-right mr-2"></i>
+                  <p>Relatório de Contas à Receber</p>
+                </a>
+              </li>
+
+              <li class="nav-item">
+                <a href="cadastro/cep" class="nav-link">
+                  <i class="fa-solid fa-caret-right mr-2"></i>
+                  <p>Relatório de Contas à Receber</p>
+                </a>
+              </li>
+
+              <li class="nav-item">
+                <a href="cadastro/cep" class="nav-link">
+                  <i class="fa-solid fa-caret-right mr-2"></i>
+                  <p>Relatório de Contas à Receber</p>
+                </a>
+              </li>
+
+              <li class="nav-item">
+                <a href="cadastro/cep" class="nav-link">
+                  <i class="fa-solid fa-caret-right mr-2"></i>
+                  <p>Relatório de Contas à Receber</p>
+                </a>
+              </li>
+
+              <li class="nav-item">
+                <a href="cadastro/cep" class="nav-link">
+                  <i class="fa-solid fa-caret-right mr-2"></i>
+                  <p>Relatório de Contas à Receber</p>
+                </a>
+              </li>
+
+              <li class="nav-item">
+                <a href="cadastro/cep" class="nav-link">
+                  <i class="fa-solid fa-caret-right mr-2"></i>
+                  <p>Relatório de Contas à Receber</p>
+                </a>
+              </li>
+
+              <li class="nav-item">
+                <a href="cadastro/cep" class="nav-link">
+                  <i class="fa-solid fa-caret-right mr-2"></i>
+                  <p>Relatório de Contas à Receber</p>
+                </a>
+              </li>
+            </ul>
+          </li>
+
+        </ul>
+
+
+      </nav>
+      <!-- /.sidebar-menu -->
+    </div>
+    <!-- /.sidebar -->
+  </aside>

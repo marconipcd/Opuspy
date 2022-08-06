@@ -1,0 +1,17 @@
+{
+  "name": "opuserp",
+  "short_name": "opuserp",
+  "description": "Blog template for Nuxt.js/Netlify",
+  "icons": [
+    {
+      "src": "AdminLTELogo1.png",
+      "sizes": "128x128",
+      "type": "image/png",
+      "purpose": "any maskable"
+    }
+  ],
+  "start_url": "../inicio",
+  "display": "standalone",
+  "background_color": "#ffffff",
+  "lang": "en"
+}

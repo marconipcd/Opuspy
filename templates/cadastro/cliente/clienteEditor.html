@@ -1,0 +1,457 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>OpusERP</title>
+
+  <!-- Google Font: Source Sans Pro -->
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700&display=fallback">
+  <!-- Font Awesome -->
+  <link rel="stylesheet" href="../../plugins/fontawesome-free/css/all.min.css">
+  <!-- Ionicons -->
+  <link rel="stylesheet" href="https://code.ionicframework.com/ionicons/2.0.1/css/ionicons.min.css">
+  <!-- Tempusdominus Bootstrap 4 -->
+  <link rel="stylesheet" href="../../plugins/tempusdominus-bootstrap-4/css/tempusdominus-bootstrap-4.min.css">
+  <!-- iCheck -->
+  <link rel="stylesheet" href="../../plugins/icheck-bootstrap/icheck-bootstrap.min.css">
+  <!-- JQVMap -->
+  <link rel="stylesheet" href="../../plugins/jqvmap/jqvmap.min.css">
+  <!-- Theme style -->
+  <link rel="stylesheet" href="../../dist/css/adminlte.min.css">
+  <!-- overlayScrollbars -->
+  <link rel="stylesheet" href="../../plugins/overlayScrollbars/css/OverlayScrollbars.min.css">
+  <!-- Daterange picker -->
+  <link rel="stylesheet" href="../../plugins/daterangepicker/daterangepicker.css">
+  <!-- summernote -->
+  <link rel="stylesheet" href="../../plugins/summernote/summernote-bs4.min.css">
+  
+  
+  
+  
+</head>
+
+
+<body class="hold-transition sidebar-mini layout-fixed">
+<div class="wrapper">
+
+  <!-- Navbar -->
+  <nav class="main-header navbar navbar-expand navbar-white navbar-light">
+    <!-- Left navbar links -->
+    <ul class="navbar-nav">
+      <li class="nav-item">
+        <a class="nav-link" data-widget="pushmenu" href="#" role="button"><i class="fas fa-bars"></i></a>
+      </li>      
+    </ul>
+	
+	<h2 class="m-0 text-dark" th:text="${titulo}"></h1>
+	
+	
+	
+  </nav>
+  <!-- /.navbar -->
+
+  <!-- Main Sidebar Container -->
+  <aside th:insert="menu_lateral_2">
+  </aside>
+  
+  <!-- Content Wrapper. Contains page content -->
+  <div class="content-wrapper">
+    <!-- Content Header (Page header) -->
+    <br>
+    
+    <!-- Main content -->
+    <section class="content">
+      <div class="container-fluid">       
+        <div class="row">
+          <div class="col-12">  
+          	<div class="card">      
+          	<div class="card-header" style="padding: 1.12em; padding-left: 0px;">           
+                <div class="card-tools" style="width:100%;">
+                  <div class="input-group input-group" style="width: 100%;">
+                    <a th:href="@{/cadastro/cliente}" th:method="get"  type="submit" class="btn btn-default" >Voltar</a>&nbsp;  
+                    <button class="btn btn-primary">Salvar</button>&nbsp;                               
+                  </div>
+                </div>
+              </div>   
+              
+            
+              <div class="container-responsive ml-2 mr-2 pt-2 pl-2">
+              
+              	<form>
+				  <div class="mb-1 row">
+					    <label for="txtCod" class="col-sm-1 col-form-label col-form-label-sm ">Código</label>
+					    <div class="col-sm-1">
+					      <input type="text" class="form-control form-control-sm" id="txtCod" th:value="${cliente.id}" disabled>
+					    </div>
+					    
+					    <label for="txtCadastro" class="col-sm-1 col-form-label col-form-label-sm ">Cadastro</label>
+					    <div class="col-sm-2">
+					      <input type="text" class="form-control form-control-sm" id="txtCadastro" th:value="${cliente.data_cadastro}" disabled>
+					    </div>
+					    
+					    <label for="txtCadastro" class="col-sm-1 col-form-label col-form-label-sm ">Alteração</label>
+					    <div class="col-sm-2">
+					      <input type="text" class="form-control form-control-sm" id="txtCadastro" th:value="${cliente.data_alteracao}" disabled>
+					    </div>
+					    
+					     <label for="txtCadastro" class="col-sm-1 col-form-label col-form-label-sm ">Status</label>
+					    <div class="col-sm-2">
+					      <input type="text" class="form-control form-control-sm" id="txtCadastro" th:value="${cliente.status}" disabled>
+					    </div>
+				  </div>
+				  <div class="mb-1 row">
+					    <label for="inputPassword" class="col-sm-1 col-form-label col-form-label-sm ">CPF/CNPJ</label>
+					    <div class="col-sm-2">
+					      <input type="text" class="form-control form-control-sm" id="txtNome" th:value="${cliente.doc_cpf_cnpj}">
+					    </div>
+					    
+					    <label for="inputPassword" class="col-sm-2 col-form-label col-form-label-sm ">Insc. Estadual/RG</label>
+					    <div class="col-sm-2">
+					      <input type="text" class="form-control form-control-sm" id="txtNome" th:value="${cliente.doc_rg_insc_estadual}">
+					    </div>
+					    
+					    <label for="inputPassword" class="col-sm-2 col-form-label col-form-label-sm ">Orgão Emissor</label>
+					    <div class="col-sm-2">
+					      <input type="text" class="form-control form-control-sm" id="txtNome" th:value="${cliente.orgao_emissor_rg}">
+					    </div>
+				  </div>	
+				  <div class="mb-1 row">
+					    <label for="txtNome" class="col-sm-1 col-form-label col-form-label-sm ">Nome</label>
+					    <div class="col-sm-6">
+					      <input type="text" class="form-control form-control-sm" id="txtNome" th:value="${cliente.nome_razao}">
+					    </div>					    
+					    <div class="col-sm-1">
+					      <input type="text" class="form-control form-control-sm" id="txtNome" th:value="${cliente.tratamento}">
+					    </div>					    
+					    <div class="col-sm-3">
+					      <input type="text" class="form-control form-control-sm" id="txtNome" th:value="${cliente.contato}">
+					    </div>
+				  </div>	
+				  
+				  <div class="mb-1 row">
+					    <label for="txtNome" class="col-sm-1 col-form-label col-form-label-sm ">Fantasia</label>
+					    <div class="col-sm-10">
+					      <input type="text" class="form-control form-control-sm" id="txtNome" th:value="${cliente.nome_fantasia}">
+					    </div>    
+				  </div>
+				  <div class="mb-1 row">
+					    <label for="txtNome" class="col-sm-1 col-form-label col-form-label-sm ">Contato</label>
+					    <div class="col-sm-10">
+					      <input type="text" class="form-control form-control-sm" id="txtNome" th:value="${cliente.nome_razao}">
+					    </div>    
+				  </div>
+
+				 <div class="ml-1 mb-1 row">
+					 <nav>
+						  <div class="nav nav-tabs" id="nav-tab" role="tablist">
+						    <a class="nav-item nav-link active" id="nav-principal-tab" data-toggle="tab" href="#nav-principal" role="tab" aria-controls="nav-principal" aria-selected="true">Principal</a>
+						    <a class="nav-item nav-link" id="nav-enderecos-tab" data-toggle="tab" href="#nav-enderecos" role="tab" aria-controls="nav-enderecos" aria-selected="false">Endereços</a>
+						    <a class="nav-item nav-link" id="nav-outrasinfo-tab" data-toggle="tab" href="#nav-outrasinfo" role="tab" aria-controls="nav-outrasinfo" aria-selected="false">Outras Informações</a>
+						    <a class="nav-item nav-link" id="nav-infoaluno-tab" data-toggle="tab" href="#nav-infoaluno" role="tab" aria-controls="nav-infoaluno" aria-selected="false">Info. Aluno</a>
+						  </div>
+					</nav>
+				</div>
+
+					<div class="tab-content" id="nav-tabContent">
+					  <div class="tab-pane fade show active " id="nav-principal" role="tabpanel" aria-labelledby="nav-principal-tab">
+					  	<div class="card p-2">
+						 <div class="mb-1 row">
+						    <label for="txtNome" class="col-sm-1 col-form-label col-form-label-sm ">Sexo</label>
+						    <div class="col-sm-2">
+						      <input type="text" class="form-control form-control-sm" id="txtNome" th:value="${cliente.sexo}">
+						    </div>
+						    
+						    <label for="txtNome" class="col-sm-2 col-form-label col-form-label-sm ">Data de nascimento</label>
+						    <div class="col-sm-2">
+						      <input type="text" class="form-control form-control-sm" id="txtNome" th:value="${cliente.data_nascimento}">
+						    </div>
+						    
+						    <label for="txtNome" class="col-sm-1 col-form-label col-form-label-sm ">Profissão</label>
+						    <div class="col-sm-2">
+						      <input type="text" class="form-control form-control-sm" id="txtNome" th:value="${cliente.profissao}">
+						    </div>    
+				  		</div>
+				  		
+				  		<div class="mb-1 row">
+						    <label for="txtNome" class="col-sm-1 col-form-label col-form-label-sm ">Tel. Princ.</label>
+						    <div class="col-sm-1">
+						      <input type="text" class="form-control form-control-sm" id="txtNome" th:value="${cliente.ddd_fone1}">
+						    </div>		    
+						   
+						    <div class="col-sm-2">
+						      <input type="text" class="form-control form-control-sm" id="txtNome" th:value="${cliente.telefone1}">
+						    </div>
+						    
+						    <label for="txtNome" class="col-sm-1 col-form-label col-form-label-sm ">Tel. Altern.</label>
+						    <div class="col-sm-1">
+						      <input type="text" class="form-control form-control-sm" id="txtNome" th:value="${cliente.ddd_fone2}">
+						    </div>					    
+						   
+						    <div class="col-sm-2">
+						      <input type="text" class="form-control form-control-sm" id="txtNome" th:value="${cliente.telefone2}">
+						    </div>	    
+				  		</div>
+				  		
+				  		<div class="mb-1 row">
+						    <label for="txtNome" class="col-sm-1 col-form-label col-form-label-sm ">Tel. Altern.</label>
+						    <div class="col-sm-1">
+						      <input type="text" class="form-control form-control-sm" id="txtNome" th:value="${cliente.ddd_cel1}">
+						    </div>		    
+						   
+						    <div class="col-sm-2">
+						      <input type="text" class="form-control form-control-sm" id="txtNome" th:value="${cliente.celular1}">
+						    </div>
+						    
+						    <label for="txtNome" class="col-sm-1 col-form-label col-form-label-sm ">Tel. Altern.</label>
+						    <div class="col-sm-1">
+						      <input type="text" class="form-control form-control-sm" id="txtNome" th:value="${cliente.ddd_cel2}">
+						    </div>					    
+						   
+						    <div class="col-sm-2">
+						      <input type="text" class="form-control form-control-sm" id="txtNome" th:value="${cliente.celular2}">
+						    </div>	    
+				  		</div>
+				  		
+				  		<div class="mb-1 row">
+						    <label for="txtNome" class="col-sm-1 col-form-label col-form-label-sm ">Instagram</label>
+						    <div class="col-sm-3">
+						      <input type="text" class="form-control form-control-sm" id="txtNome" th:value="${cliente.nome_razao}">
+						    </div>  						    
+				  		</div>
+				  		
+				  		<div class="mb-1 row">
+						    <label for="txtNome" class="col-sm-1 col-form-label col-form-label-sm ">Email Prin.</label>
+						    <div class="col-sm-3">
+						      <input type="text" class="form-control form-control-sm" id="txtNome" th:value="${cliente.email}">
+						    </div>  
+						    
+						     <label for="txtNome" class="col-sm-1 col-form-label col-form-label-sm ">Site</label>
+						    <div class="col-sm-3">
+						      <input type="text" class="form-control form-control-sm" id="txtNome" th:value="${cliente.site}">
+						    </div>  						    
+				  		</div>
+				  		
+				  		<div class="mb-1 row">
+						    <label for="txtNome" class="col-sm-1 col-form-label col-form-label-sm ">Email Altern.</label>
+						    <div class="col-sm-3">
+						      <input type="text" class="form-control form-control-sm" id="txtNome" th:value="${cliente.msn}">
+						    </div>  
+						    
+						     <label for="txtNome" class="col-sm-1 col-form-label col-form-label-sm ">Rede Social</label>
+						    <div class="col-sm-3">
+						      <input type="text" class="form-control form-control-sm" id="txtNome" th:value="${cliente.rede_social}">
+						    </div>  						    
+				  		</div>
+				  		
+				  		<div class="mb-1 row">
+						    <label for="txtNome" class="col-sm-1 col-form-label col-form-label-sm ">CRM Aniv.</label>
+						    <div class="col-sm-1">
+						      <input type="text" class="form-control form-control-sm" id="txtNome" >
+						    </div>  					    				    
+				  		</div>
+				  		
+				  		<div class="mb-1 row">
+						    <label for="txtNome" class="col-sm-1 col-form-label col-form-label-sm ">Categoria</label>
+						    <div class="col-sm-2">
+						      <input type="text" class="form-control form-control-sm" id="txtNome" th:value="${cliente.categoria}">
+						    </div>
+						    
+						    <label for="txtNome" class="col-sm-2 col-form-label col-form-label-sm ">Como nos Conheceu ?</label>
+						    <div class="col-sm-3">
+						      <input type="text" class="form-control form-control-sm" id="txtNome" th:value="${cliente.como_nos_conheceu}">
+						    </div>  					    				    
+				  		</div>
+				  		
+				  		<div class="mb-1 row">
+						    <label for="txtNome" class="col-sm-1 col-form-label col-form-label-sm" th:value="${cliente.obs}">Observação</label>
+						    <div class="col-sm-6">						      
+						      <textarea class="form-control form-control-sm" rows="3" cols="15"></textarea>
+						    </div>						    					    				    
+				  		</div>
+				  		</div>
+					  </div>
+					  
+					  <div class="tab-pane fade" id="nav-enderecos" role="tabpanel" aria-labelledby="nav-enderecos-tab">	
+					  	<div class="card p-2">
+							  	<div class="card-header" style="padding: 1.12em; padding-left: 0px;">           
+					                <div class="card-tools" style="width:100%;">
+					                  <div class="input-group input-group" style="width: 100%;">
+					                    	<a type="submit" class="btn btn-default" >Adicionar</a>&nbsp;
+					                    	<a type="submit" class="btn btn-default" >Editar</a>&nbsp;
+					                    	<a type="submit" class="btn btn-default" >Editar localização</a>&nbsp;
+					                    	<a type="submit" class="btn btn-default" >Ativar/Inativar</a>&nbsp;
+					                    	<a type="submit" class="btn btn-default" >Principal/Cobrança</a>					                                                   
+					                  </div>
+					                </div>
+					             </div>  
+					             
+					              <table id="myTable"  class="table table-hover table-sm text-nowrap table-striped table-condensed table-responsive-sm ">
+					                  <thead>
+					                    <tr>					                      
+					                      <th>ID</th>
+					                      <th>CEP</th>
+					                      <th>Endereço</th>
+					                      <th>Número</th>
+					                      <th>Bairro</th>
+					                      <th>Cidade</th>
+					                      <th>UF</th>                     
+					                    </tr>
+					                  </thead>
+					                  <tbody>
+					                    <tr >
+					                    	<td></td>
+					                    	<td></td>
+					                    	<td></td>
+					                    	<td></td>
+					                    	<td></td>
+					                    	<td></td>
+					                    	<td></td>	                   
+					                    </tr>
+					                   
+					                  </tbody>
+					                </table>
+					  	</div>				  
+					  </div>
+					  
+					  <div class="tab-pane fade" id="nav-outrasinfo" role="tabpanel" aria-labelledby="nav-outrasinfo-tab">					  
+					  		<div class="card p-2">
+					  				 <div class="mb-1 row">
+									    <label for="txtVendedor" class="col-sm-1 col-form-label col-form-label-sm ">Vendedor</label>
+									    <div class="col-sm-1">
+									      <input type="text" class="form-control form-control-sm" id="txtVendedor" >
+									    </div>								    
+							  		</div>
+							  		<div class="mb-1 row">
+									    <label for="txtTransportadoraPadra" class="col-sm-1 col-form-label col-form-label-sm ">Transp. Padrão</label>
+									    <div class="col-sm-2">
+									      <input type="text" class="form-control form-control-sm" id="txtTransportadoraPadra" >
+									    </div>								    
+							  		</div>
+							  		<div class="mb-1 row">
+									    <label for="txtTransportadoraPadra" class="col-sm-1 col-form-label col-form-label-sm ">Tabela Preço</label>
+									    <div class="col-sm-2">
+									      <input type="text" class="form-control form-control-sm" id="txtTransportadoraPadra" >
+									    </div>								    
+							  		</div>
+							  		
+							  		<div class="mb-1 row">
+									    <label for="txtPrimeiraCompra" class="col-sm-1 col-form-label col-form-label-sm ">Prim. Compra</label>
+									    <div class="col-sm-1">
+									      <input type="text" class="form-control form-control-sm" id="txtPrimeiraCompra" >
+									    </div>								    
+							  		</div>
+							  		
+							  		<div class="mb-1 row">
+									    <label for="txtPrimeiraCompra" class="col-sm-1 col-form-label col-form-label-sm ">Últi. Compra</label>
+									    <div class="col-sm-1">
+									      <input type="text" class="form-control form-control-sm" id="txtPrimeiraCompra" >
+									    </div>								    
+							  		</div>
+							  		
+							  		<div class="mb-1 row">
+									    <label for="txtPrimeiraCompra" class="col-sm-1 col-form-label col-form-label-sm ">SPC/SERASA</label>
+									    <div class="col-sm-1">
+									      <input type="text" class="form-control form-control-sm" id="txtPrimeiraCompra" >
+									    </div>								    
+							  		</div>
+							  		
+							  		<div class="mb-1 row">
+									    <label for="txtPrimeiraCompra" class="col-sm-1 col-form-label col-form-label-sm ">Lim. de Créd.</label>
+									    <div class="col-sm-1">
+									      <input type="text" class="form-control form-control-sm" id="txtPrimeiraCompra" >
+									    </div>								    
+							  		</div>
+							  		
+							  		<div class="mb-1 row">
+									    <label for="txtPrimeiraCompra" class="col-sm-1 col-form-label col-form-label-sm ">Saldo R$</label>
+									    <div class="col-sm-1">
+									      <input type="text" class="form-control form-control-sm" id="txtPrimeiraCompra" >
+									    </div>								    
+							  		</div>
+							  		
+							  		<div class="mb-1 row">
+									    <label for="txtPrimeiraCompra" class="col-sm-1 col-form-label col-form-label-sm ">Black List</label>
+									    <div class="col-sm-1">
+									      <input type="text" class="form-control form-control-sm" id="txtPrimeiraCompra" >
+									    </div>								    
+							  		</div>
+							  		
+							  		<div class="mb-1 row">
+									    <label for="txtPrimeiraCompra" class="col-sm-1 col-form-label col-form-label-sm ">Observação</label>
+									    <div class="col-sm-2">
+									      <input type="text" class="form-control form-control-sm" id="txtPrimeiraCompra" >
+									    </div>								    
+							  		</div>
+							  		
+					  		</div>
+					  </div>
+					  <div class="tab-pane fade" id="nav-infoaluno" role="tabpanel" aria-labelledby="nav-infoaluno-tab">					  
+					  </div>
+					</div>				
+	
+	
+				</form>    
+              </div>  
+              
+        	</div>
+        </div>
+      </div><!-- /.container-fluid -->
+    </section>
+    <!-- /.content -->
+    
+    
+       
+  </div>
+  <!-- /.content-wrapper -->
+
+
+  <!-- Control Sidebar -->
+  <aside class="control-sidebar control-sidebar-dark">
+    <!-- Control sidebar content goes here -->
+  </aside>
+  <!-- /.control-sidebar -->
+</div>
+<!-- ./wrapper -->
+
+<!-- jQuery -->
+<script src="../../plugins/jquery/jquery.min.js"></script>
+<!-- jQuery UI 1.11.4 -->
+<script src="../../plugins/jquery-ui/jquery-ui.min.js"></script>
+<!-- Resolve conflict in jQuery UI tooltip with Bootstrap tooltip -->
+<script>
+  $.widget.bridge('uibutton', $.ui.button)
+</script>
+<!-- Bootstrap 4 -->
+<script src="../../plugins/bootstrap/js/bootstrap.bundle.min.js"></script>
+<!-- ChartJS -->
+<script src="../../plugins/chart.js/Chart.min.js"></script>
+<!-- Sparkline -->
+<script src="../../plugins/sparklines/sparkline.js"></script>
+<!-- JQVMap -->
+<script src="../../plugins/jqvmap/jquery.vmap.min.js"></script>
+<script src="../../plugins/jqvmap/maps/jquery.vmap.usa.js"></script>
+<!-- jQuery Knob Chart -->
+<script src="../../plugins/jquery-knob/jquery.knob.min.js"></script>
+<!-- daterangepicker -->
+<script src="../../plugins/moment/moment.min.js"></script>
+<script src="../../plugins/daterangepicker/daterangepicker.js"></script>
+<!-- Tempusdominus Bootstrap 4 -->
+<script src="../../plugins/tempusdominus-bootstrap-4/js/tempusdominus-bootstrap-4.min.js"></script>
+<!-- Summernote -->
+<script src="../../plugins/summernote/summernote-bs4.min.js"></script>
+<!-- overlayScrollbars -->
+<script src="../../plugins/overlayScrollbars/js/jquery.overlayScrollbars.min.js"></script>
+<!-- AdminLTE App -->
+<script src="../../dist/js/adminlte.js"></script>
+<!-- AdminLTE for demo purposes -->
+<script src="../../dist/js/demo.js"></script>
+<!-- AdminLTE dashboard demo (This is only for demo purposes) -->
+<script src="../../dist/js/pages/dashboard.js"></script>
+
+
+
+</body>
+</html>
+
+ 
